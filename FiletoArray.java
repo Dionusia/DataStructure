@@ -5,10 +5,9 @@ import java.io.IOException;
 import java.util.*;
 
 
-
 public class FiletoArray {
 
-    private Map<String,Double> DateOpenMap = new HashMap<String,Double>();
+    private Map<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
     //= new HashMap<String,Double>();
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
@@ -51,8 +50,22 @@ public class FiletoArray {
        }
     }
 
-    public Map<String,Double> getMap(){
+    /*public Map<String,Double> getMap(){
         return DateOpenMap;
+    }*/
+
+    public double[] getField(){
+        
+        
+        String[] temp = DateOpenMap.values().toArray(new String[0]);
+
+        double[] array = new double[temp.length];
+
+        for(int i =0 ; i<temp.length; ++i){
+            array[i] = Double.parseDouble(temp[i]);
+        }
+        return array;
+
     }
 
 
@@ -65,5 +78,6 @@ public class FiletoArray {
             return true;
         }
     }
+
 
 }
