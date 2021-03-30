@@ -17,10 +17,12 @@ public class FiletoArray {
 
         int numberOfType = 0;
         try{
+            
              reader = new BufferedReader(new FileReader(path));
 
             while((readline = reader.readLine()) != null){
-                String [] types = readline.split(",");
+                String str=readline;
+                String [] types = str.split("[,]", 0);
                 
                 
 
@@ -80,4 +82,16 @@ public class FiletoArray {
     }
 
 
+
+    public static void main(String[] args) {
+        
+        try{
+            FiletoArray fta = new FiletoArray("agn.us.txt","Open");
+
+            
+                System.out.print(fta.getField());
+            
+        }
+        catch(Exception e){}
+    }
 }

@@ -6,13 +6,8 @@ public class MergeSort {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
-            mergeSort(array, fta.getField().length);
-            for(int i=0; i<array.length; i++){
-                System.out.println(array[i]);
-            }
-            
-        
-            
+            mergeSort(array);
+              
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -41,9 +36,9 @@ public class MergeSort {
           array[i++] = right_array[right_array_counter++];
         }
     }
-
+/*
     public static void mergeSort(double array[], int lenght){
-        if (lenght <= 1){return;} //checks if there is one element in the array
+        if (lenght <= 1){ return;} //checks if there is one element in the array
         
         int mid = lenght / 2;
         double  left_array[] = new double[mid];
@@ -63,10 +58,43 @@ public class MergeSort {
       mergeSort(left_array,mid);
       mergeSort(right_array,lenght-mid);
       merge(left_array,right_array,array,mid,lenght-mid);
+      
     }
+    */
 
+
+
+     public static void mergeSort(double [] array){
+        if (array.length <= 1) {
+        return;
+        } //checks if there is one element in the array
+        
+        int mid = array.length / 2;
+        double  left_array[] = new double[mid];
+        double  right_array[] = new double[array.length-mid];
+        int k=0;
+
+        for(int i = 0;i<array.length;++i){
+            if(i<mid){
+                left_array[i] = array[i];
+            }
+            else{
+                right_array[k] = array[i];
+                k = k+1;
+            }
+        }
+
+      mergeSort(left_array);
+      mergeSort(right_array);
+      merge(left_array,right_array,array,mid,array.length-mid);
+        int n = array.length; 
+        for (int i = 0; i < n; ++i) 
+            System.out.println(array[i]); 
+    }
+    
 public static void main(String[] args) {
     MergeSort a = new MergeSort("agn.us.txt", "Open");
+    System.out.println(a);
 }
 }
 
