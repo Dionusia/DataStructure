@@ -8,7 +8,7 @@ import java.util.*;
 public class FiletoArray {
 
     private Map<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-    //= new HashMap<String,Double>();
+    private ArrayList<String> list = new ArrayList<String>();
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
@@ -21,8 +21,7 @@ public class FiletoArray {
              reader = new BufferedReader(new FileReader(path));
 
             while((readline = reader.readLine()) != null){
-                String str=readline;
-                String [] types = str.split("[,]", 0);
+                String [] types = readline.split("[,]");
                 
                 
 
@@ -36,7 +35,7 @@ public class FiletoArray {
                 }
                 else{
                     DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
-                    System.out.println(Double.parseDouble(types[numberOfType]));
+                    //System.out.println(Double.parseDouble(types[numberOfType]));
                 }
             }
         }
@@ -59,15 +58,19 @@ public class FiletoArray {
     public double[] getField(){
         
         
-        String[] temp = DateOpenMap.values().toArray(new String[0]);
+        Vector<Double> vec = new Vector<Double>(); 
+        double[] array;
 
-        double[] array = new double[temp.length];
+        for(Map.Entry<String,Double> mapElement : DateOpenMap.entrySet()){
+            vec.add((double)mapElement.getValue());
+        }
 
-        for(int i =0 ; i<temp.length; ++i){
-            array[i] = Double.parseDouble(temp[i]);
+        array = new double[vec.size()];
+
+        for(int i=0;i<vec.size();i++){
+            array[i] = vec.get(i);
         }
         return array;
-
     }
 
 
@@ -81,17 +84,4 @@ public class FiletoArray {
         }
     }
 
-
-
-    public static void main(String[] args) {
-        
-        try{
-            FiletoArray fta = new FiletoArray("agn.us.txt","Open");
-
-            
-                System.out.print(fta.getField());
-            
-        }
-        catch(Exception e){}
-    }
 }
