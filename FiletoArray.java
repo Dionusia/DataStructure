@@ -8,7 +8,7 @@ import java.util.*;
 public class FiletoArray {
 
     private Map<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-    private ArrayList<String> list = new ArrayList<String>();
+    //= new HashMap<String,Double>();
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
@@ -21,7 +21,8 @@ public class FiletoArray {
              reader = new BufferedReader(new FileReader(path));
 
             while((readline = reader.readLine()) != null){
-                String [] types = readline.split("[,]");
+                String str=readline;
+                String [] types = str.split("[,]", 0);
                 
                 
 
@@ -35,7 +36,7 @@ public class FiletoArray {
                 }
                 else{
                     DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
-                    //System.out.println(Double.parseDouble(types[numberOfType]));
+                    System.out.println(Double.parseDouble(types[numberOfType]));
                 }
             }
         }
@@ -58,19 +59,15 @@ public class FiletoArray {
     public double[] getField(){
         
         
-        Vector<Double> vec = new Vector<Double>(); 
-        double[] array;
+        String[] temp = DateOpenMap.values().toArray(new String[0]);
 
-        for(Map.Entry<String,Double> mapElement : DateOpenMap.entrySet()){
-            vec.add((double)mapElement.getValue());
-        }
+        double[] array = new double[temp.length];
 
-        array = new double[vec.size()];
-
-        for(int i=0;i<vec.size();i++){
-            array[i] = vec.get(i);
+        for(int i =0 ; i<temp.length; ++i){
+            array[i] = Double.parseDouble(temp[i]);
         }
         return array;
+
     }
 
 
@@ -84,4 +81,17 @@ public class FiletoArray {
         }
     }
 
+
+
+    public static void main(String[] args) {
+        
+        try{
+            FiletoArray fta = new FiletoArray("agn.us.txt","Open");
+
+            
+                System.out.print(fta.getField());
+            
+        }
+        catch(Exception e){}
+    }
 }

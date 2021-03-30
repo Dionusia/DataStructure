@@ -6,11 +6,7 @@ public class MergeSort {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
-           
-
-            for(double i :array) {
-                System.out.println(i);
-            }
+            mergeSort(array);
               
         }catch(IOException e){
             e.printStackTrace();
@@ -18,7 +14,7 @@ public class MergeSort {
 
     }
 
-    /*public static void merge(double[] left_array,double[] right_array, double[] array,int left_size, int right_size){
+    public static void merge(double[] left_array,double[] right_array, double[] array,int left_size, int right_size){
        
         int i=0; int left_array_counter=0; int right_array_counter=0;
 
@@ -68,10 +64,9 @@ public class MergeSort {
 
 
 
-     /*public static void mergeSort(double [] array){
+     public static void mergeSort(double [] array){
         if (array.length <= 1) {
-            for (int i = 0; i < array.length; ++i) 
-                System.out.println(array[i]);
+        return;
         } //checks if there is one element in the array
         
         int mid = array.length / 2;
@@ -92,21 +87,14 @@ public class MergeSort {
       mergeSort(left_array);
       mergeSort(right_array);
       merge(left_array,right_array,array,mid,array.length-mid);
-        /*int n = array.length; 
-        
+        int n = array.length; 
+        for (int i = 0; i < n; ++i) 
             System.out.println(array[i]); 
-    }*/
+    }
     
-
-
-
-    
-
-
-
-
 public static void main(String[] args) {
     MergeSort a = new MergeSort("agn.us.txt", "Open");
+    System.out.println(a);
 }
 }
 
