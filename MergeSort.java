@@ -6,7 +6,7 @@ public class MergeSort {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
-            mergeSort(array);
+            mergeSort(array,array.length);
             
             for(double i : array) {
                 System.out.println(i);
@@ -17,63 +17,54 @@ public class MergeSort {
         }
 
     }
+    
+    public static void merge(double[] left_array,double[] right_array, double[] array,int left_size, int right_size){
+        
+        int i=0; int left_array_counter=0; int right_array_counter=0;
 
-    public static void merge(double[] left_array,double[] right_array,double[] array){
-
-        int i=0;
-        int left_counter=0;  int right_counter=0;
-        while(left_counter < left_array.length && right_counter < right_array.length){
-
-            if(left_array[left_counter]<right_array[left_counter]){
-                array[i++] = left_array[left_counter++];
+        while(left_array_counter<left_size && right_array_counter<right_size){
+        
+            if(left_array[left_array_counter]<right_array[right_array_counter]){
+                array[i++] = left_array[left_array_counter++];
             }
             else{
-                array[i++] = right_array[right_counter++];
+                array[i++] = right_array[right_array_counter++];
             }
         }
         //this while loops checks which part of right or left has not end
-        while(left_counter<left_array.length){
-            array[i++] = left_array[left_counter++];
+        while(left_array_counter<left_size){
+            array[i++] = left_array[left_array_counter++];
         }
-        while(right_counter<right_array.length){
-          array[i++] = right_array[right_counter++];
+        while(right_array_counter<right_size){
+        array[i++] = right_array[right_array_counter++];
         }
     }
 
+
+        public static void mergeSort(double array[], int lenght){
+        if (lenght <= 1){return;} //checks if there is one element in the array
         
+        int mid = lenght / 2;
+        double  left_array[] = new double[mid];
+        double  right_array[] = new double[lenght-mid];
+        int k=0;
 
-    public static double[] mergeSort(double[] array){
-
-        int array_length = array.length;
-        int k = 0;
-
-        if(array_length < 2)
-            return array;
-
-        int mid_element = array_length / 2;
-
-        double[] left_array = new double[mid_element];
-        double[] right_array = new double[array.length - mid_element];
-
-        for(int i=0; i<array_length; i++){
-            if(i<mid_element){
+        for(int i = 0;i<lenght;++i){
+            if(i<mid){
                 left_array[i] = array[i];
             }
             else{
                 right_array[k] = array[i];
-                ++k;
+                k = k+1;
             }
         }
 
-
-        mergeSort(left_array);
-        mergeSort(right_array);
-        merge(left_array, right_array,array);
-
-        return array;
+        mergeSort(left_array,mid);
+        mergeSort(right_array,lenght-mid);
+        merge(left_array,right_array,array,mid,lenght-mid);
     }
-    
-         
+
+  
     public static void main(String[] args) {
         MergeSort a = new MergeSort("agn.us.txt", "Open");
     }

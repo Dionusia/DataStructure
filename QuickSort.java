@@ -1,18 +1,21 @@
+import java.io.IOException;
 
 public class QuickSort {
 
- /*  QuickSort(String filename, String field) {
-      try{
-          FiletoArray fta = new FiletoArray(filename, field);
-          double array[] = fta.getField();
-          quickSort(array,0,array.length); 
-          for(double i: array)
-            System.out.println(i);
+    QuickSort(String filename, String field) {
+        try{
+            FiletoArray fta = new FiletoArray(filename, field);
+            double array[] = fta.getField();
+            quickSort(array,0,array.length-1);
+
+            for(double i: array){
+                System.out.println(i);
+            }
         }    
-      catch(IOException e){
-          e.printStackTrace();
-      }
-   }*/
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
   
 
 
@@ -50,13 +53,16 @@ public class QuickSort {
       
    }
 
-   public static void main(String[] args) {  
-      int i;  
-      double[] arr={90.4,23,101,45,65.3,23,67,89,34,23};  
-      quickSort(arr, 0, 9);  
-      System.out.println("\n The sorted array is: \n");  
-      for(i=0;i<10;i++)  
-      System.out.println(arr[i]);  
-  }
+    public static void main(String[] args) {  
+        //QuickSort sort = new QuickSort("agn.us.txt","Volume");
+        try{
+            FiletoArray fta = new FiletoArray("agn.us.txt","Volume");
+            double[] array = fta.getField();
+
+            for(double i : array){
+                System.out.println(i);
+            }
+        }catch(Exception e){}
+    }
 }
 
