@@ -8,7 +8,7 @@ import java.util.*;
 public class FiletoArray {
 
     private Map<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-    private ArrayList<String> list = new ArrayList<String>();
+   
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
