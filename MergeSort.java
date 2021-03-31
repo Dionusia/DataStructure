@@ -41,7 +41,7 @@ public class MergeSort {
     }
 
 
-        public static void mergeSort(double array[], int lenght){
+    public static void mergeSort(double array[], int lenght){
         if (lenght <= 1){return;} //checks if there is one element in the array
         
         int mid = lenght / 2;
