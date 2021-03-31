@@ -1,19 +1,19 @@
-import java.io.IOException;
+
 public class QuickSort {
 
-   QuickSort(String filename, String field) {
+ /*  QuickSort(String filename, String field) {
       try{
           FiletoArray fta = new FiletoArray(filename, field);
           double array[] = fta.getField();
           quickSort(array,0,array.length); 
-          for(int i=0; i<array.length; i++)      {
-             System.out.println(array[i]);
-          }    
-      }catch(IOException e){
+          for(double i: array)
+            System.out.println(i);
+        }    
+      catch(IOException e){
           e.printStackTrace();
       }
-
-  }
+   }*/
+  
 
 
    public static int Partition(double [] array, int startIndex,int endIndex){
@@ -50,7 +50,13 @@ public class QuickSort {
       
    }
 
-   public static void main(String[] args) {
-      QuickSort a = new QuickSort("agn.us.txt", "Open");
-   }
+   public static void main(String[] args) {  
+      int i;  
+      double[] arr={90.4,23,101,45,65.3,23,67,89,34,23};  
+      quickSort(arr, 0, 9);  
+      System.out.println("\n The sorted array is: \n");  
+      for(i=0;i<10;i++)  
+      System.out.println(arr[i]);  
+  }
 }
+
