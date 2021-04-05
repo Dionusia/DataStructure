@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FiletoArray {
 
-    private Map<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
+    private HashMap<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
    
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
@@ -51,9 +51,9 @@ public class FiletoArray {
        }
     }
 
-    /*public Map<String,Double> getMap(){
+    public HashMap<String,Double> getMap(){
         return DateOpenMap;
-    }*/
+    }
 
     public double[] getField(){
         

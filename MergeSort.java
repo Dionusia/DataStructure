@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.*;
+
 
 public class MergeSort {
 
@@ -8,8 +10,13 @@ public class MergeSort {
             double array[] = fta.getField();
             mergeSort(array,array.length);
             
-            for(double i : array) {
-                System.out.println(i);
+            SortDate order = new SortDate(array,fta.getMap());
+
+            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField();
+
+
+            for(Map.Entry<String,Double> entry : orderedMap.entrySet()) {
+                System.out.println("Key: "+ entry.getKey() + " Value: "+ entry.getValue());
             }
               
         }catch(IOException e){

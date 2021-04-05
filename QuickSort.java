@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.*;
 
 public class QuickSort {
 
@@ -8,8 +9,13 @@ public class QuickSort {
             double array[] = fta.getField();
             quickSort(array,0,array.length-1);
 
-            for(double i: array){
-                System.out.println(i);
+            SortDate order = new SortDate(array,fta.getMap());
+
+            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField();
+
+
+            for(Map.Entry<String,Double> entry : orderedMap.entrySet()) {
+                System.out.println("Key: "+ entry.getKey() + " Value: "+ entry.getValue());
             }
         }    
         catch(IOException e){
@@ -56,13 +62,11 @@ public class QuickSort {
     public static void main(String[] args) {  
         //QuickSort sort = new QuickSort("agn.us.txt","Volume");
         try{
-            FiletoArray fta = new FiletoArray("agn.us.txt","Volume");
-            double[] array = fta.getField();
-
-            for(double i : array){
-                System.out.println(i);
-            }
-        }catch(Exception e){}
+            QuickSort qs = new QuickSort("agn.us.txt","Open");
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
 
