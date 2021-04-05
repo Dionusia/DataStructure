@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.*;
 
 public class HeapSort {
 
@@ -8,8 +9,13 @@ public class HeapSort {
             double array[] = fta.getField();
             heapSort(array);
             
-            for(double i : array) {
-                System.out.println(i);
+            SortDate order = new SortDate(array,fta.getMap());
+
+            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField();
+
+
+            for(Map.Entry<String,Double> entry : orderedMap.entrySet()) {
+                System.out.println("Key: "+ entry.getKey() + " Value: "+ entry.getValue());
             }
               
         }catch(IOException e){
@@ -22,7 +28,7 @@ public class HeapSort {
 
     public static void heapify(double [] array,int current,int size ){
 
-        int largest=current; //
+        int largest=current; //parent
         int left=2*current+1; //left child
         int right=2*current+2; //right child
         
@@ -46,6 +52,9 @@ public class HeapSort {
     }
 
     public static void heapSort(double [] array){
+
+        for (int i = (array.length / 2) - 1; i >= 0; i--)
+            heapify(array,i,array.length);
         
         for(int i= array.length-1; i>0; --i){
             double temp=array[0];
