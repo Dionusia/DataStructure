@@ -59,13 +59,15 @@ public class CountingSort {
         }
 
         //fill index array with the number of occurrences
-        for(int i=0; i<arr.length; i++){
-            int current = arr[i];;
-            if (current == arr[i])
-            {
-                index_array[arr[i]]++;
+        for(int i = 0; i < index_array.length; i++){
+            int counter = 0;
+            for(int j = 0; j < array.length; j++){
+                if(array[j] == i){
+                    counter++;
+                }
+                index_array[i] = counter;
             }
-        }
+        } 
 
         //sum up the index array values with previous values
         for (int i = 1; i <= max; i++) {
