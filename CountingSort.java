@@ -18,7 +18,6 @@ public class CountingSort {
             }
             countingSort(int_array);
             
-            
 
           /*  
            SortDate order = new SortDate(array,fta.getMap());
@@ -75,25 +74,26 @@ public class CountingSort {
             output_array[index_array[array[i]] - 1] = array[i];
             index_array[array[i]]--; //decrement index array value
         }
+
+
         for (int i = 0; i <array.length; ++i){
             array[i] = output_array[i];
             
         }
             
-}
+    }
         
-        private int getInt(double i){
-            return (int)Math.ceil(i); 
+
+    private int getInt(double i){
+        return (int)Math.ceil(i); 
+    
+    }
+
+
+    public static void main(String[] args) {
         
-        }
-
-public static void main(String[] args) {
-       
-    CountingSort cs= new CountingSort("agn.us.txt","Close");
- }
-
-
- 
+        CountingSort cs= new CountingSort("agn.us.txt","Close");
+    }
 
 
 }

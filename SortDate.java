@@ -6,10 +6,22 @@ public class SortDate {
     double array[];
     HashMap<String,Double> map = new LinkedHashMap<String,Double>();
 
+    int[] int_array;
+    HashMap<Double,Integer> Double_Int_map = new LinkedHashMap<Double,Integer>();
+
     SortDate(double[] array,HashMap<String,Double> map) {
     
         this.array = array;
         this.map = map;
+    }
+
+    SortDate(int[] int_array,HashMap<Double,Integer> map){
+        this.int_array = int_array;
+
+        map = classifyArray(map, int_array);
+
+        this.Double_Int_map = map;
+
     }
 
     //K,V generics -> Function to get the key of a value in the map
@@ -31,6 +43,19 @@ public class SortDate {
         for(double number : array){
             sortedMap.put(getKey(map,number),number);
         }
+        return sortedMap;
+    }
+
+
+    private LinkedHashMap<Double,Integer> classifyArray(HashMap<Double,Integer> map, int[] array){
+
+
+        LinkedHashMap<Double,Integer> sortedMap = new LinkedHashMap<Double,Integer>();
+
+        for(int number : array){
+            sortedMap.put(getKey(map,number),number);
+        }
+
         return sortedMap;
     }
     
