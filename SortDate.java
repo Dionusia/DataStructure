@@ -18,8 +18,6 @@ public class SortDate {
     SortDate(int[] int_array,HashMap<Double,Integer> map){
         this.int_array = int_array;
 
-        map = classifyArray(map, int_array);
-
         this.Double_Int_map = map;
 
     }
@@ -36,7 +34,7 @@ public class SortDate {
 
     }
 
-    public LinkedHashMap<String,Double> classifyDateAndField(){
+    public LinkedHashMap<String,Double> classifyDateAndField(HashMap<String,Double>map,double[] array){
 
         LinkedHashMap<String,Double> sortedMap = new LinkedHashMap<String,Double>();
 
@@ -47,8 +45,7 @@ public class SortDate {
     }
 
 
-    private LinkedHashMap<Double,Integer> classifyArray(HashMap<Double,Integer> map, int[] array){
-
+    public LinkedHashMap<Double,Integer> classifyArray(HashMap<Double,Integer> map, int[] array){
 
         LinkedHashMap<Double,Integer> sortedMap = new LinkedHashMap<Double,Integer>();
 
@@ -57,6 +54,25 @@ public class SortDate {
         }
 
         return sortedMap;
+    }
+
+
+    public double[] getDoubleArray(LinkedHashMap<Double,Integer> map){
+        
+        
+        Vector<Double> vec = new Vector<Double>(); 
+        double[] array;
+
+        for(Map.Entry<Double,Integer> mapElement : map.entrySet()){
+            vec.add((double)mapElement.getKey());
+        }
+
+        array = new double[vec.size()];
+
+        for(int i=0;i<vec.size();i++){
+            array[i] = vec.get(i);
+        }
+        return array;
     }
     
 }

@@ -12,7 +12,7 @@ public class MergeSort {
             
             SortDate order = new SortDate(array,fta.getMap());
 
-            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField();
+            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
 
 
             for(Map.Entry<String,Double> entry : orderedMap.entrySet()) {

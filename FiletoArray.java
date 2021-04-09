@@ -8,7 +8,7 @@ import java.util.*;
 public class FiletoArray {
 
     private HashMap<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-   
+    private HashMap<String,Integer> DateCloseMap = new LinkedHashMap<String,Integer>();
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
@@ -34,7 +34,11 @@ public class FiletoArray {
         
                 }
                 else{
-                    DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
+                    if(wordToAvoid == "Volume"){
+                        DateCloseMap.put(types[0], Integer.parseInt(types[numberOfType]));
+                    }
+                    else
+                        DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
                     //System.out.println(Double.parseDouble(types[numberOfType]));
                 }
             }

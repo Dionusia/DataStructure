@@ -19,15 +19,17 @@ public class CountingSort {
             countingSort(int_array);
             
 
-          /*  
-           SortDate order = new SortDate(array,fta.getMap());
+            SortDate sortDoubleInt = new SortDate(int_array,DClose_ICloseMap);
+            
+            LinkedHashMap<Double,Integer> orderedMap = sortDoubleInt.classifyArray(DClose_ICloseMap, int_array);
+            
+            double[] arr1 = sortDoubleInt.getDoubleArray(orderedMap);
 
-            LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField();
+            LinkedHashMap<String,Double> orderedMap1 = sortDoubleInt.classifyDateAndField(fta.getMap(), arr1);
 
-
-            for(Map.Entry<String,Double> entry : orderedMap.entrySet()) {
+            for(Map.Entry<String,Double> entry : orderedMap1.entrySet()) {
                 System.out.println("Key: "+ entry.getKey() + " Value: "+ entry.getValue());
-            }*/
+            }
              
         }catch(IOException e){
             e.printStackTrace();
