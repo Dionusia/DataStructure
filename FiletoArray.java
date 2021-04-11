@@ -8,7 +8,9 @@ import java.util.*;
 public class FiletoArray {
 
     private HashMap<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-    private HashMap<String,Integer> DateCloseMap = new LinkedHashMap<String,Integer>();
+    Vector<String> date = new Vector<String>(); 
+    Vector<Integer> volume = new Vector<Integer>();
+    
 
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
@@ -35,7 +37,9 @@ public class FiletoArray {
                 }
                 else{
                     if(wordToAvoid == "Volume"){
-                        DateCloseMap.put(types[0], Integer.parseInt(types[numberOfType]));
+                        date.add(types[0]);
+                        volume.add(Integer.parseInt(types[numberOfType]));
+                        
                     }
                     else
                         DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
@@ -75,6 +79,26 @@ public class FiletoArray {
             array[i] = vec.get(i);
         }
         return array;
+    }
+
+    public String[] getDate(){
+        String[] array = date.toArray(new String[date.size()]);
+        return array;
+
+    }
+
+    /*public  Vector<Integer> getVolumeVector(){
+        return volume;
+    }*/
+
+    //convert Integer[] to int[] to get the volume
+    public int[] getVolume(){
+        Integer[] array=volume.toArray(new Integer[volume.size()]);
+        int array1[] = new int[array.length];
+     for(int i = 0; i < array.length; i++){
+         array1[i]= array[i].intValue();
+     }
+        return array1;
     }
 
 
