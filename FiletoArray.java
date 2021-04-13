@@ -8,10 +8,10 @@ import java.util.*;
 public class FiletoArray {
 
     private HashMap<String,Double> DateOpenMap = new LinkedHashMap<String,Double>();
-    Vector<String> date = new Vector<String>(); 
-    Vector<Integer> volume = new Vector<Integer>();
+    private Vector<String> date = new Vector<String>(); 
+    private Vector<Integer> volume = new Vector<Integer>();
     
-
+    
     FiletoArray(String path,String wordToAvoid) throws IOException{
 
         BufferedReader reader =null;
@@ -43,7 +43,6 @@ public class FiletoArray {
                     }
                     else
                         DateOpenMap.put(types[0], Double.parseDouble(types[numberOfType]));
-                    //System.out.println(Double.parseDouble(types[numberOfType]));
                 }
             }
         }
@@ -59,12 +58,13 @@ public class FiletoArray {
        }
     }
 
+
     public HashMap<String,Double> getMap(){
         return DateOpenMap;
     }
 
+
     public double[] getField(){
-        
         
         Vector<Double> vec = new Vector<Double>(); 
         double[] array;
@@ -81,24 +81,15 @@ public class FiletoArray {
         return array;
     }
 
+
     public String[] getDate(){
         String[] array = date.toArray(new String[date.size()]);
         return array;
-
     }
 
-    /*public  Vector<Integer> getVolumeVector(){
-        return volume;
-    }*/
 
-    //convert Integer[] to int[] to get the volume
-    public int[] getVolume(){
-        Integer[] array=volume.toArray(new Integer[volume.size()]);
-        int array1[] = new int[array.length];
-     for(int i = 0; i < array.length; i++){
-         array1[i]= array[i].intValue();
-     }
-        return array1;
+    public  Vector<Integer> getVolumeVector(){
+        return volume;
     }
 
 

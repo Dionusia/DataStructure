@@ -19,9 +19,8 @@ public class BinarySearch {
             //position of the given array
             int position= binarySearch(array, target);
             //match the position of the date to volume
-            int[] array1= ar.getVolume();
             
-            System.out.println("Volume for the given date is: " +array1[position] );
+            System.out.println("Volume for the given date is: " + ar.getVolumeVector().get(position));
 
             
         }
@@ -57,13 +56,12 @@ public class BinarySearch {
     
     }
 
-  public static void main(String[] args) {
-      Scanner myObj = new Scanner(System.in);
-      System.out.println("Enter a date(example:2007-04-17): ");
-      String date = myObj.nextLine();
-      BinarySearch bs = new BinarySearch("agn.us.txt",date);
-      myObj.close();
+    public static void main(String[] args) {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Enter a date(example:2007-04-17): ");
+        String date = myObj.nextLine();
+        BinarySearch bs = new BinarySearch("agn.us.txt",date);
+        myObj.close();
       
-      
-  } 
+    } 
 }
