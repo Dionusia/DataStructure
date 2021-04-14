@@ -8,15 +8,16 @@ public class InterpolationSearch {
         try{
 
             FiletoArray ar = new FiletoArray(filename,"Volume");
+            StringHandler handler = new StringHandler();
 
-            int[] array = stringToIntArray(ar.getDate());
+            int[] array = handler.stringToIntArray(ar.getDate());
             
-            int pos = search(array,0,array.length-1,stringHandler(target));
+            int pos = search(array,0,array.length-1,handler.stringHandler(target));
             
             if(pos == -1)   
                 System.out.println("Element not found");
             else
-                System.out.println("Element found in position: " + ar.getVolumeVector().get(pos));
+                System.out.println("Element found, Volume: " + ar.getVolumeVector().get(pos));
                
             
         }catch(Exception e){
@@ -51,27 +52,6 @@ public class InterpolationSearch {
     }
 
 
-    private int[] stringToIntArray(String[] array) {
-
-        int[] int_array = new int[array.length];
-
-        for(int i = 0; i < array.length; i++){
-
-            int_array[i] = stringHandler(array[i]);
-        }
-        return int_array;
-    }
-
-
-    private int stringHandler(String str) {
-        String[] values = str.split("-");
-        String s = "";
-
-        for(int i=0; i<values.length ;++i) {
-            s = s + values[i];
-        }
-        return Integer.parseInt(s);
-    }
 
 
     public static void main(String[] args){
