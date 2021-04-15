@@ -12,7 +12,7 @@ public class BIS {
 
             int[] array = handler.stringToIntArray(ar.getDate());
             
-            int pos = bisSearch(array,0,array.length -1,handler.stringHandler(target));
+            int pos = bisSearch(array,1,array.length ,handler.stringHandler(target));
             
             if(pos == -1)   
                 System.out.println("Element not found");
@@ -27,60 +27,55 @@ public class BIS {
 
     private int bisSearch(int[] array, int l, int r, int target){
 
-        if(l>r || (l==r && array[l]!=target)){
-            return -1;
-        }
-        else if(l==r && array[l] == target){
-            return l;
-        }
-        int position = (target-array[l])/(array[r] -array[l]);
+        int left = l;
+        int right = r;
 
-        int mid = l + position*(r-1);
+        int size = right - left;
 
-        int i =1;
+        int next = (int) (size * ((target - array[left])/(array[right] - array[left]))) + 1;
 
-        if(target > array[mid]){
-            int next = mid + i*(int)Math.sqrt(array.length);
+        while(target != array[next]){
 
-            while(true){
-                
-
-                if(next>r || target<array[next])
-                    break;
-
-                if(target == array[next])
-                    return next;
-
-                i++;
-                
-            }
-            l = mid + (i-1)*(int)Math.sqrt(array.length) + 1;
+            int i =0;
             
-            r = Math.min(r,next -1);
-            return bisSearch(array,l,r,target);
-        }
-        else if(target<array[mid]){
-            int next = mid - i*(int)Math.sqrt(array.length);
+            /*if(size<=3){
+                //boolean found = false;
+                int k =left;
 
-            while(true) {
-                
+                while(k<right){
+                    if(array[k] == target){
+                        return k;
+                    }
+                    k++;
+                }
+                return -1;
+            }*/
 
-                if(next <l || target>array[next])   
-                    break;
-                
-                if(target == array[next])   
-                    return next;
+            if(target >= array[next]){
 
-                i++;
+                while(target > array[next + i*((int)Math.sqrt(size)) -1]){
+                   i++;
+                }
+                right = next + (int)(i* Math.sqrt(size));
+                left = next + (int)((i -1)* Math.sqrt(size));
             }
-            r = mid -(i-1)*(int)Math.sqrt(array.length) - 1;
-            l = Math.max(l,next + 1);
 
-            return bisSearch(array,l,r,target);
+            else if(target < array[next]){
+                
+                while(target < array[next - i*((int)Math.sqrt(size) +1)]){
+                    i++;
+                }
+                right = next - (int)((i -1)* Math.sqrt(size));
+                left = next - (int)(i* Math.sqrt(size));
+            }
+            next = (int) (left +((right -left +1)*(target - array[left])/(array[right] - array[left]))) -1;
         }
-        else
-            return mid;
-        
+
+        if(target == array[next]){
+            return next;
+        }
+        else 
+            return -1;
     }
 
 
