@@ -28,13 +28,12 @@ public class InterpolationSearch {
     
     private int search(int[] array,int startIndex, int endIndex, int target){
         
-        //startIndex will be array[0] for the first time whereas endIndex will be array[length -1]
-
-
-        //position variable according to the interpolation algorithm
-        int position = startIndex + (((endIndex - startIndex) / (array[endIndex] - array[startIndex]))*(target -array[startIndex]));   
+        //startIndex will be array[0] for the first time whereas endIndex will be array[length -1]  
 
         if(startIndex <= endIndex && target >= array[startIndex] && target <= array[endIndex]){
+
+            //position variable according to the interpolation algorithm
+            int position = startIndex + (((endIndex - startIndex) / (array[endIndex] - array[startIndex]))*(target -array[startIndex])); 
 
             if(array[position] == target){
                 return position; //element found

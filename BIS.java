@@ -25,17 +25,17 @@ public class BIS {
 
     }
 
-    private int bisSearch(int[] array, int l, int r, int target){
+    private int bisSearch(int[] array, int left, int right, int target){
 
-        if(l>r || (l==r && array[l]!=target)){
+        if(left>right || (left==right && array[left]!=target)){
             return -1;
         }
-        else if(l==r && array[l] == target){
-            return l;
+        else if(left==right && array[left] == target){
+            return left;
         }
-        int position = (target-array[l])/(array[r] -array[l]);
+        int position = (target-array[left])/(array[right] -array[left]);
 
-        int mid = l + position*(r-1);
+        int mid = left + position*(right-1);
 
         int i =1;
 
@@ -45,19 +45,19 @@ public class BIS {
             while(true){
                 
 
-                if(next>r || target<array[next])
+                if(next>right || target<array[next])
                     break;
 
                 if(target == array[next])
                     return next;
 
-                i++;
+                i = i++;
                 
             }
-            l = mid + (i-1)*(int)Math.sqrt(array.length) + 1;
+            left = mid + (i-1)*(int)Math.sqrt(array.length) + 1;
             
-            r = Math.min(r,next -1);
-            return bisSearch(array,l,r,target);
+            right = Math.min(right,next -1);
+            return bisSearch(array,left,right,target);
         }
         else if(target<array[mid]){
             int next = mid - i*(int)Math.sqrt(array.length);
@@ -65,18 +65,18 @@ public class BIS {
             while(true) {
                 
 
-                if(next <l || target>array[next])   
+                if(next <left || target>array[next])   
                     break;
                 
                 if(target == array[next])   
                     return next;
 
-                i++;
+                i = i++;
             }
-            r = mid -(i-1)*(int)Math.sqrt(array.length) - 1;
-            l = Math.max(l,next + 1);
+            right = mid -(i-1)*(int)Math.sqrt(array.length) - 1;
+            left = Math.max(left,next + 1);
 
-            return bisSearch(array,l,r,target);
+            return bisSearch(array,left,right,target);
         }
         else
             return mid;

@@ -66,6 +66,6 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        HeapSort a = new HeapSort("agn.us.txt", "Open");
+        HeapSort a = new HeapSort("agn.us.txt", "Close");
     }
 }
