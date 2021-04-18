@@ -3,12 +3,16 @@ import java.util.*;
 
 public class HeapSort {
 
+    long startTime,endTime;
     HeapSort(String filename, String field) {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
+
+            startTime = System.nanoTime();
             heapSort(array);
-            
+            endTime = System.nanoTime();
+
             SortDate order = new SortDate(array,fta.getMap());
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
@@ -27,7 +31,7 @@ public class HeapSort {
 
 
     public static void heapify(double [] array,int current,int size ){
-
+        
         int largest=current; //parent
         int left=2*current+1; //left child
         int right=2*current+2; //right child
@@ -51,7 +55,7 @@ public class HeapSort {
 
     }
 
-    public static void heapSort(double [] array){
+    public void heapSort(double [] array){
 
         for (int i = (array.length / 2) - 1; i >= 0; i--)
             heapify(array,i,array.length);
@@ -67,5 +71,6 @@ public class HeapSort {
 
     public static void main(String[] args) {
         HeapSort a = new HeapSort("agn.us.txt", "Close");
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
     }
 }

@@ -4,10 +4,15 @@ import java.util.*;
 
 public class MergeSort {
 
+    long startTime,endTime;
+
     MergeSort(String filename, String field) {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
+
+            startTime = System.nanoTime(); 
+            
             mergeSort(array,array.length);
             
             SortDate order = new SortDate(array,fta.getMap());
@@ -48,8 +53,12 @@ public class MergeSort {
     }
 
 
-    public static void mergeSort(double array[], int lenght){
-        if (lenght <= 1){return;} //checks if there is one element in the array
+    public void mergeSort(double array[], int lenght){
+
+        if (lenght <= 1){
+            endTime = System.nanoTime();
+            return;
+        } //checks if there is one element in the array
         
         int mid = lenght / 2;
         double  left_array[] = new double[mid];
@@ -74,6 +83,8 @@ public class MergeSort {
   
     public static void main(String[] args) {
         MergeSort a = new MergeSort("agn.us.txt", "Open");
+
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
     }
 }
 

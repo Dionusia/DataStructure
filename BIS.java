@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class BIS {
     
-
+    long startTime,endTime;
     BIS(String filename, String target){
         
         try{
@@ -12,7 +12,10 @@ public class BIS {
 
             int[] array = handler.stringToIntArray(ar.getDate());
             
+            startTime = System.nanoTime(); 
             int pos = bisSearch(array,0,array.length -1,handler.stringHandler(target));
+            
+            endTime = System.nanoTime();
             
             if(pos == -1)   
                 System.out.println("Element not found");
@@ -27,12 +30,14 @@ public class BIS {
 
     private int bisSearch(int[] array, int left, int right, int target){
 
-        if(left>right || (left==right && array[left]!=target)){
+        
+        if(left>right || (left==right && array[left]!=target)){            
             return -1;
         }
-        else if(left==right && array[left] == target){
+        else if(left==right && array[left] == target){    
             return left;
         }
+
         int position = (target-array[left])/(array[right] -array[left]);
 
         int mid = left + position*(right-1);
@@ -48,8 +53,9 @@ public class BIS {
                 if(next>right || target<array[next])
                     break;
 
-                if(target == array[next])
+                if(target == array[next]){
                     return next;
+                }
 
                 i = i++;
                 
@@ -68,8 +74,9 @@ public class BIS {
                 if(next <left || target>array[next])   
                     break;
                 
-                if(target == array[next])   
+                if(target == array[next]){
                     return next;
+                }
 
                 i = i++;
             }
@@ -78,20 +85,26 @@ public class BIS {
 
             return bisSearch(array,left,right,target);
         }
-        else
+        else{
+            
             return mid;
+        }
+        
+        
         
     }
 
 
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-
+        
         System.out.println("Date to search for: ");
         String getInput = input.nextLine();
 
         input.close();
         BIS a = new BIS("agn.us.txt", getInput);
+
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
 
     }
 

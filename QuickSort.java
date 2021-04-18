@@ -3,12 +3,16 @@ import java.util.*;
 
 public class QuickSort {
 
+    long startTime,endTime;
     QuickSort(String filename, String field) {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
             double array[] = fta.getField();
-            quickSort(array,0,array.length-1);
 
+            startTime = System.nanoTime();
+            quickSort(array,0,array.length-1);
+            endTime = System.nanoTime();
+            
             SortDate order = new SortDate(array,fta.getMap());
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
@@ -61,7 +65,8 @@ public class QuickSort {
     public static void main(String[] args) {  
         //QuickSort sort = new QuickSort("agn.us.txt","Volume");
         try{
-            QuickSort qs = new QuickSort("agn.us.txt","Open");
+            QuickSort a = new QuickSort("agn.us.txt","Open");
+            System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
         
         }catch(Exception e){
             e.printStackTrace();

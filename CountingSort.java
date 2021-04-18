@@ -3,8 +3,9 @@ import java.util.*;
 
 public class CountingSort {
 
-      private HashMap<Double,Integer> DClose_ICloseMap = new LinkedHashMap<Double,Integer>();
+    private HashMap<Double,Integer> DClose_ICloseMap = new LinkedHashMap<Double,Integer>();
 
+    long startTime,endTime;
     CountingSort(String filename, String field) {
         try{
             FiletoArray fta = new FiletoArray(filename, field);
@@ -16,8 +17,10 @@ public class CountingSort {
                 int_array[i] = getInt(array[i]);
 
             }
+
+            startTime = System.nanoTime();
             countingSort(int_array);
-            
+            endTime = System.nanoTime();
 
             SortDate sortDoubleInt = new SortDate(int_array,DClose_ICloseMap);
             
@@ -94,7 +97,9 @@ public class CountingSort {
 
     public static void main(String[] args) {
         
-        CountingSort cs= new CountingSort("agn.us.txt","Close");
+        CountingSort a = new CountingSort("agn.us.txt","Close");
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
+
     }
 
 

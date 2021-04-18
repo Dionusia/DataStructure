@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class BinarySearch {
 
+    long startTime,endTime;
     BinarySearch(String filename,String target){
         try{
             FiletoArray ar = new FiletoArray(filename, "Volume");
@@ -17,7 +18,9 @@ public class BinarySearch {
                 System.out.println("date found");
             }
             //position of the given array
+            startTime = System.nanoTime();
             int position= binarySearch(array, target);
+            endTime = System.nanoTime();
             //match the position of the date to volume
             
             System.out.println("Volume for the given date is: " + ar.getVolumeVector().get(position));
@@ -60,8 +63,9 @@ public class BinarySearch {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter a date(example:2007-04-17): ");
         String date = myObj.nextLine();
-        BinarySearch bs = new BinarySearch("agn.us.txt",date);
+        BinarySearch a = new BinarySearch("agn.us.txt",date);
         myObj.close();
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
       
     } 
 }

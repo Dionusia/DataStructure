@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class InterpolationSearch {
     
     
+    long startTime,endTime;
+
     InterpolationSearch(String filename,String target){
 
         try{
@@ -12,8 +14,9 @@ public class InterpolationSearch {
 
             int[] array = handler.stringToIntArray(ar.getDate());
             
+            startTime = System.nanoTime();
             int pos = search(array,0,array.length-1,handler.stringHandler(target));
-            
+            endTime = System.nanoTime();
             if(pos == -1)   
                 System.out.println("Element not found");
             else
@@ -61,6 +64,6 @@ public class InterpolationSearch {
 
         input.close();
         InterpolationSearch a = new InterpolationSearch("agn.us.txt", getInput);
-
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
     }
 }
