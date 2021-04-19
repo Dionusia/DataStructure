@@ -2,6 +2,7 @@ import java.io.IOException;
 
 public class BinarySearchTree {
 
+    StringHandler handler = new StringHandler();
     Node root;
 
     //we start adding Nodes
@@ -98,7 +99,7 @@ public class BinarySearchTree {
         }
 
         public String toString(){
-            return name + " has a key " +key;
+            return name + " has a key " + handler.dateFormat(key);
         }
     }
 
@@ -129,7 +130,7 @@ public class BinarySearchTree {
             getFocusNode.name = newVolume;
             System.out.println(getFocusNode.toString());
         }else{
-            System.out.println("date not found");
+            System.out.println("Date not found");
         }
 
     }
@@ -166,7 +167,7 @@ public class BinarySearchTree {
         return min;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         
         BinarySearchTree theTree = new BinarySearchTree();
         
@@ -184,5 +185,5 @@ public class BinarySearchTree {
         theTree.inOrderTraverseTree(theTree.root);
 
 
-    }
+    }*/
 }

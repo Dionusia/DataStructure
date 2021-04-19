@@ -22,4 +22,16 @@ public class StringHandler {
         }
         return Integer.parseInt(s);
     }
+
+    public String dateFormat(int number){
+
+        String s = Integer.toString(number);
+
+        String str1 = s.substring(0, 4) + "-";
+        String str2 = s.substring(4,6) + "-";
+        String str3 = s.substring(6);
+        
+        s = str1 + str2 + str3;
+        return s;
+    }
 }
