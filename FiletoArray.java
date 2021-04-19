@@ -64,6 +64,7 @@ public class FiletoArray {
     }
 
 
+
     public double[] getField(){
         
         Vector<Double> vec = new Vector<Double>(); 
@@ -82,6 +83,7 @@ public class FiletoArray {
     }
 
 
+
     public String[] getDate(){
         String[] array = date.toArray(new String[date.size()]);
         return array;
@@ -91,7 +93,6 @@ public class FiletoArray {
     public  Vector<Integer> getVolumeVector(){
         return volume;
     }
-
 
     private boolean isFirstLine(String value){
         try{

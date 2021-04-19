@@ -9,9 +9,6 @@ public class SortDate {
     int[] int_array;
     HashMap<Double,Integer> Double_Int_map = new LinkedHashMap<Double,Integer>();
 
-    String[] string_array;
-    HashMap<String,Integer> DateVolumeMap = new LinkedHashMap<String,Integer>();
-
     SortDate(double[] array,HashMap<String,Double> map) {
     
         this.array = array;
@@ -23,6 +20,7 @@ public class SortDate {
         this.Double_Int_map = map;
 
     }
+
 
 
     //K,V generics -> Function to get the key of a value in the map
@@ -59,6 +57,7 @@ public class SortDate {
         return sortedMap;
     }
 
+
     public double[] getDoubleArray(LinkedHashMap<Double,Integer> map){
         
         
@@ -76,5 +75,4 @@ public class SortDate {
         }
         return array;
     }
-    
 }
