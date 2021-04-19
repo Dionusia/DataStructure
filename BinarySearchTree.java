@@ -5,7 +5,7 @@ public class BinarySearchTree {
     Node root;
 
     //we start adding Nodes
-    public void addNode(String key, String name){
+    public void addNode(int key, int name){
 
         //we create a new Node and initialize it
         Node newNode = new Node(key, name);
@@ -22,7 +22,7 @@ public class BinarySearchTree {
                 parent = focusNode;
 
                 //we check in which side our new node will go 
-                if (key.compareTo(focusNode.key) < 0){
+                if (key< focusNode.key){
 
                     focusNode = focusNode.leftChild;
 
@@ -31,7 +31,7 @@ public class BinarySearchTree {
                         return;
                     }
 
-                }else if(key.compareTo(focusNode.key) > 0){
+                }else if(key > focusNode.key){
 
                     focusNode= focusNode.rightChild;
 
@@ -59,11 +59,11 @@ public class BinarySearchTree {
         }
     }
 
-    public void preorderTraverseTree(Node focusNode){
+    /*public void preorderTraverseTree(Node focusNode){
 
         if(focusNode != null){
 
-            System.out.println(focusNode);
+            //System.out.println(focusNode);
 
             preorderTraverseTree(focusNode.leftChild);
             preorderTraverseTree(focusNode.rightChild);
@@ -71,17 +71,28 @@ public class BinarySearchTree {
         }
     }
 
+    public void postorderTraverseTree(Node focusNode){
+
+        if(focusNode != null){
+
+            postorderTraverseTree(focusNode.leftChild);
+            postorderTraverseTree(focusNode.rightChild);
+
+            //System.out.println(focusNode);
+
+        }
+    }*/
 
     
     class Node {
 
-        String key;
-        String name;
+        int key;
+        int name;
 
         Node leftChild;
         Node rightChild;
 
-        Node(String key, String name){
+        Node(int key, int name){
             this.key = key;
             this.name=name;
         }
@@ -91,17 +102,87 @@ public class BinarySearchTree {
         }
     }
 
+    //function for search
+    public Node findNode(int key){
+        Node focusNode = root;
+
+        while(focusNode.key != key){
+            if(key < focusNode.key){
+                focusNode = focusNode.leftChild;
+            } else{
+                focusNode = focusNode.rightChild;
+            }
+
+            if(focusNode == null){
+                return null;
+            }
+        }
+
+        return focusNode;
+    }
+
+    //change Volume
+    public void changeNode(int key, int newVolume){
+        Node getFocusNode = findNode(key);
+
+        if(getFocusNode != null){
+            getFocusNode.name = newVolume;
+            System.out.println(getFocusNode.toString());
+        }else{
+            System.out.println("date not found");
+        }
+
+    }
+
+
+    public Node deleteNode(Node root, int key){
+
+        if(root == null){
+            return root;
+        }
+        if(key < root.key){
+            root.leftChild = deleteNode(root.leftChild,key);
+        }
+        else{
+            if(root.leftChild == null){
+                return root.rightChild;
+            }
+            else if(root.rightChild ==null)  
+                return root.leftChild;
+
+            root.key = getMinKey(root.rightChild);
+            root.rightChild = deleteNode(root.rightChild,root.key);
+        }
+        return root;
+    
+    }
+
+    public int getMinKey(Node root){
+        int min = root.key;
+        while(root.leftChild != null){
+            min = root.leftChild.key;
+            root = root.leftChild;
+        }
+        return min;
+    }
+
     public static void main(String[] args) {
         
         BinarySearchTree theTree = new BinarySearchTree();
-        try{
-        FiletoArray ar = new FiletoArray("agn.us.txt", "Volume");
-        String[] array= ar.getDate();
-        for(int i=0; i<array.length; i++){
-            theTree.addNode(array[i], "Volume");
-        }
+        
+        theTree.addNode(50,3);
+        theTree.addNode(30,4);
+        theTree.addNode(20,5);
+        theTree.addNode(40,6);
+        theTree.addNode(70,7);
+        theTree.addNode(60,8);
+        theTree.addNode(80,9);
+        
 
-        theTree.preorderTraverseTree(theTree.root);
-    }catch(IOException e){}
+        //theTree.inOrderTraverseTree(theTree.root);
+        theTree.deleteNode(theTree.root,30);
+        theTree.inOrderTraverseTree(theTree.root);
+
+
     }
 }
