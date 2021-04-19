@@ -1,4 +1,4 @@
-import java.io.IOException;
+
 
 public class BinarySearchTree {
 
@@ -60,6 +60,19 @@ public class BinarySearchTree {
         }
     }
 
+ /*   public Boolean isInOrder(int[] array, int n){
+        if(n==0 || n==1)
+        return true;
+
+        for(int i=0; i<n; i++){
+            if(array[i-1]>array[i]){
+            return false;
+            }
+
+        }
+        return true;
+    }*/
+
     /*public void preorderTraverseTree(Node focusNode){
 
         if(focusNode != null){
@@ -70,7 +83,7 @@ public class BinarySearchTree {
             preorderTraverseTree(focusNode.rightChild);
 
         }
-    }
+    }*/
 
     public void postorderTraverseTree(Node focusNode){
 
@@ -79,10 +92,10 @@ public class BinarySearchTree {
             postorderTraverseTree(focusNode.leftChild);
             postorderTraverseTree(focusNode.rightChild);
 
-            //System.out.println(focusNode);
+            System.out.println(focusNode);
 
         }
-    }*/
+    }
 
     
     class Node {
@@ -99,7 +112,8 @@ public class BinarySearchTree {
         }
 
         public String toString(){
-            return name + " has a key " + handler.dateFormat(key);
+            return "Volume->" +name + " has a key Date-> " + handler.dateFormat(key);
+            
         }
     }
 

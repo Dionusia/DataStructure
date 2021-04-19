@@ -14,7 +14,8 @@ public class Menu {
 
 
             for(int i=0; i<array.length; i++) {
-                tree.addNode(array[i], ar.getVolumeVector().get(i));
+                tree.addNode(array[i], ar.getVolumeVector().get(i)); 
+    
             }
 
         }catch(IOException e){}
@@ -53,10 +54,33 @@ public class Menu {
         }
 
         switch (intInput) {
+
             case 1:
                 System.out.println("You picked display BST");
                 tree.inOrderTraverseTree(tree.root);
-                
+
+            case 2:
+            StringHandler handler = new StringHandler();
+            Scanner date = new Scanner(System.in);
+            System.out.println("Enter a date(example:2007-04-17): ");
+            String before = date.nextLine(); 
+            int after = handler.stringHandler(before);
+            
+            System.out.println(tree.findNode(after));
+
+            case 3:
+            Scanner date1 = new Scanner(System.in);
+            System.out.println("Enter a date(example:2007-04-17): ");
+            String before1 = date1.nextLine(); 
+            StringHandler handler1 = new StringHandler();
+            int after1 = handler1.stringHandler(before1);
+
+            Scanner volume = new Scanner(System.in);
+            System.out.println("Enter a new Volume to modify:  (only integer value)");
+            int value = volume.nextInt();
+
+            tree.changeNode(after1,value);
+    
                 break;
         
             default:
