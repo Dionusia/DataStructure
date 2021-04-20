@@ -60,43 +60,6 @@ public class BinarySearchTree {
         }
     }
 
- /*   public Boolean isInOrder(int[] array, int n){
-        if(n==0 || n==1)
-        return true;
-
-        for(int i=0; i<n; i++){
-            if(array[i-1]>array[i]){
-            return false;
-            }
-
-        }
-        return true;
-    }*/
-
-    /*public void preorderTraverseTree(Node focusNode){
-
-        if(focusNode != null){
-
-            //System.out.println(focusNode);
-
-            preorderTraverseTree(focusNode.leftChild);
-            preorderTraverseTree(focusNode.rightChild);
-
-        }
-    }*/
-
-    public void postorderTraverseTree(Node focusNode){
-
-        if(focusNode != null){
-
-            postorderTraverseTree(focusNode.leftChild);
-            postorderTraverseTree(focusNode.rightChild);
-
-            System.out.println(focusNode);
-
-        }
-    }
-
     
     class Node {
 
@@ -185,6 +148,24 @@ public class BinarySearchTree {
         }
         return min;
     }
+    
+    //Find the max node in BST 
+    public Node findMinimum(Node node){
+        if(node.leftChild != null){
+          return findMinimum(node.leftChild);
+        }
+        return node;
+    }
+    
+    //Find the min node in BST
+    public Node findMaximum(Node node){
+        if(node.rightChild != null){
+          return findMaximum(node.rightChild);
+        }
+        return node;
+      }
+
+      
 
     /*public static void main(String[] args) {
         

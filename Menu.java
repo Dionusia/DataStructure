@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Menu {
-    
+
+    BinarySearchTree volumeTree = new BinarySearchTree();
     StringHandler handler = new StringHandler();
     Scanner input = new Scanner(System.in);
     String stringInput;
@@ -22,10 +23,14 @@ public class Menu {
 
             for(int i=0; i<array.length; i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
-    
             }
 
-            createMenu();
+            /*for(int i=0; i<ar.getVolumeVector().size(); i++){
+                volumeTree.addNode(ar.getVolumeVector().get(i), ar.getDate()s);
+            }*/
+
+
+            initialMenu();
 
 
         }catch(IOException e){}
@@ -33,8 +38,54 @@ public class Menu {
     }
 
 
-    private void createMenu(){
+    private void initialMenu(){
+        while(true){
+            System.out.println("Choose which menu you want: ");
+            System.out.println("1 --> BTS which keeps the record Date,Volume sorted by Date: ");
+            System.out.println("2 --> BTS which keeps the record Date,Volume sorted by Volume: ");
+            System.out.println("3 --> Hashing which keeps the record Date,Volume sorted by Date: ");
+            System.out.print(">> ");
 
+            stringInput = input.nextLine();
+
+            try {
+                intInput = Integer.parseInt(stringInput);
+                
+                if(intInput <= 0 || intInput > 3){
+                    System.out.print("\033[H\033[2J");   
+                    System.out.flush();
+                    System.out.println("Integer should be between 1 and 3");
+                }
+                else
+                    break;
+
+            }catch (Exception e){
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                System.out.println("Please type an integer from 1-3");
+            }
+        }
+
+        initialChoiseHandler();
+
+    } 
+
+    private void initialChoiseHandler(){
+        switch (intInput) {
+
+            case 1:
+                createMenu();
+                break;
+            case 2:
+                createVolumeMenu();
+                break;
+
+        }
+    }
+
+
+    private void createMenu(){
+       
         while(true){
             System.out.println("Main menu with BST: (pick from 1 to 5)");
             System.out.println("1 --> Display BST with in order traverse");
@@ -69,7 +120,7 @@ public class Menu {
         choiceHandler();
     }
 
-
+    
     private void choiceHandler(){
         
         switch (intInput) {
@@ -106,13 +157,55 @@ public class Menu {
                 tree.deleteNode(tree.root,dateToInt);
 
                 goBackToMenu();
-                break;
+                break; 
+
             case 5:
                 System.exit(0);
                 break;
             default:
                 break;
         }
+    }
+
+    private void createVolumeMenu(){
+        while(true){
+
+            System.out.println("1 --> Find Date sorted by the minimum Volume: ");
+            System.out.println("2 --> Find Date sorted by the maximum Volume: ");
+        
+
+            stringInput = input.nextLine();
+
+            try {
+                intInput = Integer.parseInt(stringInput);
+                
+                if(intInput <= 0 || intInput > 2){
+                    System.out.print("\033[H\033[2J");   
+                    System.out.flush();
+                    System.out.println("Integer should be between 1 and 2");
+                }
+                else
+                    break;
+
+            }catch (Exception e){
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                System.out.println("Please type an integer from 1-2");
+            }
+
+        }
+
+        switch (intInput){
+            case 1:
+               volumeTree.findMinimum(volumeTree.root);
+               break;
+            
+            case 2:
+               volumeTree.findMaximum(volumeTree.root);
+               break;
+
+        }
+
     }
 
 
