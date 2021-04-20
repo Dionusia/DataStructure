@@ -112,7 +112,7 @@ public class BinarySearchTree {
         }
 
         public String toString(){
-            return "Volume->" +name + " has a key Date-> " + handler.dateFormat(key);
+            return "Date: " + handler.dateFormat(key) + " Volume: " + name;
             
         }
     }
@@ -151,12 +151,16 @@ public class BinarySearchTree {
 
 
     public Node deleteNode(Node root, int key){
-
+        
         if(root == null){
+            
             return root;
         }
         if(key < root.key){
             root.leftChild = deleteNode(root.leftChild,key);
+        }
+        else if (key > root.key){
+            root.rightChild = deleteNode(root.rightChild, key);
         }
         else{
             if(root.leftChild == null){
@@ -168,6 +172,7 @@ public class BinarySearchTree {
             root.key = getMinKey(root.rightChild);
             root.rightChild = deleteNode(root.rightChild,root.key);
         }
+        
         return root;
     
     }
