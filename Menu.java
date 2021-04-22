@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 
 public class Menu {
 
-    BinarySearchTree volumeTree = new BinarySearchTree();
+    
     StringHandler handler = new StringHandler();
     Scanner input = new Scanner(System.in);
     String stringInput;
+    BinarySearchTree volumeTree = new BinarySearchTree();
     BinarySearchTree tree = new BinarySearchTree();
     int intInput = 0;
 
@@ -20,9 +21,11 @@ public class Menu {
 
             int[] array = handler.stringToIntArray(ar.getDate());
 
+            Vector<Integer> volume = new Vector<Integer>();
 
-            for(int i=0; i<array.length; i++) {
+            for(int i=0; i<volume.size(); i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
+                volumeTree.addNode(volume.get(i),array[i]);
             }
 
             /*for(int i=0; i<ar.getVolumeVector().size(); i++){

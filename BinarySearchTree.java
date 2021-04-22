@@ -116,7 +116,6 @@ public class BinarySearchTree {
     public Node deleteNode(Node root, int key){
         
         if(root == null){
-            
             return root;
         }
         if(key < root.key){
