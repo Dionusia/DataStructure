@@ -5,6 +5,7 @@ public class BinarySearchTree {
     StringHandler handler = new StringHandler();
     Node root;
 
+
     //we start adding Nodes
     public void addNode(int key, int name){
 

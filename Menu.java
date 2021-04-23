@@ -9,34 +9,37 @@ public class Menu {
     StringHandler handler = new StringHandler();
     Scanner input = new Scanner(System.in);
     String stringInput;
-    BinarySearchTree volumeTree = new BinarySearchTree();
+    BSTVolume volumeTree = new BSTVolume();
     BinarySearchTree tree = new BinarySearchTree();
     int intInput = 0;
+
+
 
 
     Menu(){
         try{
             FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
-            
 
             int[] array = handler.stringToIntArray(ar.getDate());
 
-            Vector<Integer> volume = new Vector<Integer>();
+            //Vector<Integer> volume = ar.getVolumeVector();
+            int[] array1 = ar.getVolume();
 
-            for(int i=0; i<volume.size(); i++) {
+          /*  for(int i=0; i<array.length; i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
-                volumeTree.addNode(volume.get(i),array[i]);
-            }
-
-            /*for(int i=0; i<ar.getVolumeVector().size(); i++){
-                volumeTree.addNode(ar.getVolumeVector().get(i), ar.getDate()s);
             }*/
+
+            for(int i=0; i<array1.length; i++){
+                volumeTree.addNodeVolume(array1[i],array[i]);
+            }
 
 
             initialMenu();
 
 
-        }catch(IOException e){}
+        }catch(IOException e){
+            
+        }
 
     }
 
@@ -171,6 +174,7 @@ public class Menu {
     }
 
     private void createVolumeMenu(){
+        
         while(true){
 
             System.out.println("1 --> Find Date sorted by the minimum Volume: ");
@@ -200,11 +204,11 @@ public class Menu {
 
         switch (intInput){
             case 1:
-               volumeTree.findMinimum(volumeTree.root);
+               System.out.println(volumeTree.findMinimum(volumeTree.root));
                break;
             
             case 2:
-               volumeTree.findMaximum(volumeTree.root);
+               System.out.println(volumeTree.findMaximum(volumeTree.root));
                break;
 
         }
