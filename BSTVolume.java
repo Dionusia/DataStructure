@@ -57,14 +57,14 @@ public class BSTVolume {
             Node rightChild;
     
             Node(int key, int name){
-                this.key = key;
-                this.name=name;
+                this.key = name;
+                this.name=key;
             }
+
     
             public String toString(){
                // return "Date: " + handler.dateFormat(key) + " Volume: " + name;
-               return "Volume: " +key + " Date: " +handler.dateFormat(name);
-                
+               return "Volume: " +key + " Date: " +handler.dateFormat(name);                
             }
         }
         public void inOrderTraverseTreeVolume(Node focusNode){
@@ -88,14 +88,13 @@ public class BSTVolume {
         }
 
         
-       //Find the min node in BST
+       //Find the max node in BST
         public Node findMaximum(Node node){
             if(node.rightChild != null){
               return findMaximum(node.rightChild);
             }
             return node;
           }
-          
 
           
     }

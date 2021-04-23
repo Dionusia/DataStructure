@@ -12,33 +12,33 @@ public class Menu {
     BSTVolume volumeTree = new BSTVolume();
     BinarySearchTree tree = new BinarySearchTree();
     int intInput = 0;
+    FiletoArray ar;
 
 
 
 
     Menu(){
         try{
-            FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
+            ar = new FiletoArray("agn.us.txt","Volume");
 
-            int[] array = handler.stringToIntArray(ar.getDate());
+            /*int[] array = handler.stringToIntArray(ar.getDate());
 
-            //Vector<Integer> volume = ar.getVolumeVector();
             int[] array1 = ar.getVolume();
 
-          /*  for(int i=0; i<array.length; i++) {
+           for(int i=0; i<array.length; i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
-            }*/
-
-            for(int i=0; i<array1.length; i++){
-                volumeTree.addNodeVolume(array1[i],array[i]);
             }
+
+           for(int i=0; i<array1.length; i++){
+                volumeTree.addNodeVolume(array1[i], array[i]);
+            }*/
 
 
             initialMenu();
 
 
         }catch(IOException e){
-            
+            e.printStackTrace();
         }
 
     }
@@ -91,6 +91,15 @@ public class Menu {
 
 
     private void createMenu(){
+
+           int[] array = handler.stringToIntArray(ar.getDate());
+
+            //int[] array1 = ar.getVolume();
+
+           for(int i=0; i<array.length; i++) {
+                tree.addNode(array[i], ar.getVolumeVector().get(i)); 
+            }
+
        
         while(true){
             System.out.println("Main menu with BST: (pick from 1 to 5)");
@@ -174,6 +183,14 @@ public class Menu {
     }
 
     private void createVolumeMenu(){
+
+        int[] array = handler.stringToIntArray(ar.getDate());
+
+        int[] array1 = ar.getVolume();
+
+        for(int i=0; i<array1.length; i++){
+            volumeTree.addNodeVolume(array[i],array1[i]);
+        }
         
         while(true){
 

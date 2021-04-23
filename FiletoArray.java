@@ -94,6 +94,17 @@ public class FiletoArray {
         return volume;
     }
 
+    public int[] getVolume(){
+        Integer[] array = volume.toArray(new Integer[volume.size()]);
+        int[] array_int = new int[array.length];
+        for(int i=0; i<array.length; i++){
+            array_int[i]= array[i].intValue();
+        }
+
+        return array_int;
+    
+    }
+
     private boolean isFirstLine(String value){
         try{
             Double.parseDouble(value);

@@ -4,6 +4,8 @@ public class BinarySearchTree {
 
     StringHandler handler = new StringHandler();
     Node root;
+    
+    BinarySearchTree(){root=null;}
 
 
     //we start adding Nodes
