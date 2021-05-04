@@ -13,9 +13,7 @@ public class Menu {
     BinarySearchTree tree = new BinarySearchTree();
     int intInput = 0;
     FiletoArray ar;
-
-
-
+    
 
     Menu(){
         try{
@@ -32,7 +30,18 @@ public class Menu {
            for(int i=0; i<array1.length; i++){
                 volumeTree.addNodeVolume(array1[i], array[i]);
             }*/
+            long[] array = handler.stringToIntArray(ar.getDate());
+            for(int i=0; i<array.length; i++) {
+                tree.addNode(array[i], ar.getVolumeVector().get(i)); 
+            }
 
+            long[] array_volume = handler.stringToIntArray(ar.getDate());
+
+            int[] getVolume = ar.getVolume();
+
+            for(int i=0; i<getVolume.length; i++){
+                volumeTree.addNodeVolume(array_volume[i],getVolume[i]);
+            }
 
             initialMenu();
 
@@ -92,14 +101,7 @@ public class Menu {
 
     private void createMenu(){
 
-           int[] array = handler.stringToIntArray(ar.getDate());
-
-            //int[] array1 = ar.getVolume();
-
-           for(int i=0; i<array.length; i++) {
-                tree.addNode(array[i], ar.getVolumeVector().get(i)); 
-            }
-
+           
        
         while(true){
             System.out.println("Main menu with BST: (pick from 1 to 5)");
@@ -148,7 +150,7 @@ public class Menu {
                 break;
             case 2:
                 
-                int dateToInt = handler.stringHandler(getDate());
+                long dateToInt = handler.stringHandler(getDate());
     
                 System.out.println(tree.findNode(dateToInt));
 
@@ -183,14 +185,6 @@ public class Menu {
     }
 
     private void createVolumeMenu(){
-
-        int[] array = handler.stringToIntArray(ar.getDate());
-
-        int[] array1 = ar.getVolume();
-
-        for(int i=0; i<array1.length; i++){
-            volumeTree.addNodeVolume(array[i],array1[i]);
-        }
         
         while(true){
 

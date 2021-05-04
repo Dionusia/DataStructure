@@ -10,17 +10,17 @@ public class BIS {
             FiletoArray ar = new FiletoArray(filename,"Volume");
             StringHandler handler = new StringHandler();
 
-            int[] array = handler.stringToIntArray(ar.getDate());
+            long[] array = handler.stringToIntArray(ar.getDate());
             
             startTime = System.nanoTime(); 
-            int pos = bisSearch(array,0,array.length -1,handler.stringHandler(target));
+            long pos = bisSearch(array,0,array.length -1,handler.stringHandler(target));
             
             endTime = System.nanoTime();
             
             if(pos == -1)   
                 System.out.println("Element not found");
             else
-                System.out.println("Element found, Volume: " + ar.getVolumeVector().get(pos));
+                System.out.println("Element found, Volume: " + ar.getVolumeVector().get((int)pos));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -28,32 +28,32 @@ public class BIS {
 
     }
 
-    private int bisSearch(int[] array, int left, int right, int target){
+    private long bisSearch(long[] array, long left, long right, long target){
 
         
-        if(left>right || (left==right && array[left]!=target)){            
+        if(left>right || (left==right && array[(int)left]!=target)){            
             return -1;
         }
-        else if(left==right && array[left] == target){    
+        else if(left==right && array[(int)left] == target){    
             return left;
         }
 
-        int position = (target-array[left])/(array[right] -array[left]);
+        long position = (target-array[(int)left])/(array[(int)right] -array[(int)left]);
 
-        int mid = left + position*(right-1);
+        long mid = left + position*(right-1);
 
         int i =1;
 
-        if(target > array[mid]){
-            int next = mid + i*(int)Math.sqrt(array.length);
+        if(target > array[(int)mid]){
+            long next = mid + i*(int)Math.sqrt(array.length);
 
             while(true){
                 
 
-                if(next>right || target<array[next])
+                if(next>right || target<array[(int)next])
                     break;
 
-                if(target == array[next]){
+                if(target == array[(int)next]){
                     return next;
                 }
 
@@ -65,16 +65,16 @@ public class BIS {
             right = Math.min(right,next -1);
             return bisSearch(array,left,right,target);
         }
-        else if(target<array[mid]){
-            int next = mid - i*(int)Math.sqrt(array.length);
+        else if(target<array[(int)mid]){
+            long next = mid - i*(int)Math.sqrt(array.length);
 
             while(true) {
                 
 
-                if(next <left || target>array[next])   
+                if(next <left || target>array[(int)next])   
                     break;
                 
-                if(target == array[next]){
+                if(target == array[(int)next]){
                     return next;
                 }
 

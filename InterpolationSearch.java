@@ -12,15 +12,16 @@ public class InterpolationSearch {
             FiletoArray ar = new FiletoArray(filename,"Volume");
             StringHandler handler = new StringHandler();
 
-            int[] array = handler.stringToIntArray(ar.getDate());
+            long[] array = handler.stringToIntArray(ar.getDate());
             
             startTime = System.nanoTime();
-            int pos = search(array,0,array.length-1,handler.stringHandler(target));
+            long pos = search(array,0,array.length-1,handler.stringHandler(target));
             endTime = System.nanoTime();
+
             if(pos == -1)   
                 System.out.println("Element not found");
             else
-                System.out.println("Element found, Volume: " + ar.getVolumeVector().get(pos));
+                System.out.println("Element found, Volume: " + ar.getVolumeVector().get((int)pos));
                
             
         }catch(Exception e){
@@ -29,22 +30,22 @@ public class InterpolationSearch {
     }
 
     
-    private int search(int[] array,int startIndex, int endIndex, int target){
+    private long search(long[] array,long startIndex, long endIndex, long target){
         
         //startIndex will be array[0] for the first time whereas endIndex will be array[length -1]  
 
-        if(startIndex <= endIndex && target >= array[startIndex] && target <= array[endIndex]){
+        if(startIndex <= endIndex && target >= array[(int)startIndex] && target <= array[(int)endIndex]){
 
             //position variable according to the interpolation algorithm
-            int position = startIndex + (((endIndex - startIndex) / (array[endIndex] - array[startIndex]))*(target -array[startIndex])); 
+            long position = startIndex + (((endIndex - startIndex) / (array[(int)endIndex] - array[(int)startIndex]))*(target -array[(int)startIndex])); 
 
-            if(array[position] == target){
+            if(array[(int)position] == target){
                 return position; //element found
             }
-            else if(array[position] < target){
+            else if(array[(int)position] < target){
                 return search(array,position+1,endIndex,target); //go to the next element in position of the left part of array
             }
-            else if(array[position] > target){
+            else if(array[(int)position] > target){
                 return search(array,startIndex,position-1,target); //go to the next element in position of the right part of array(starting from high)
             }
 

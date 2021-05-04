@@ -1,13 +1,12 @@
 public class BSTVolume {
 
-
         StringHandler handler = new StringHandler();
         Node root;
 
         BSTVolume(){root=null;}
     
         //we start adding Nodes
-        public void addNodeVolume(int key, int name){
+        public void addNodeVolume(long key, long name){
     
             //we create a new Node and initialize it
             Node newNode = new Node(key, name);
@@ -50,13 +49,13 @@ public class BSTVolume {
     
         class Node {
     
-            int key;
-            int name;
+            long key;
+            long name;
     
             Node leftChild;
             Node rightChild;
     
-            Node(int key, int name){
+            Node(long key, long name){
                 this.key = name;
                 this.name=key;
             }
@@ -64,7 +63,7 @@ public class BSTVolume {
     
             public String toString(){
                // return "Date: " + handler.dateFormat(key) + " Volume: " + name;
-               return "Volume: " +key + " Date: " +handler.dateFormat(name);                
+               return "Volume: " +key + " Date: " + handler.dateFormat(name);            
             }
         }
         public void inOrderTraverseTreeVolume(Node focusNode){

@@ -1,9 +1,14 @@
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+
 public class StringHandler {
 
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    public long[] stringToIntArray(String[] array) {
 
-    public int[] stringToIntArray(String[] array) {
-
-        int[] int_array = new int[array.length];
+        long[] int_array = new long[array.length];
 
         for(int i = 0; i < array.length; i++){
 
@@ -13,25 +18,18 @@ public class StringHandler {
     }
 
 
-    public int stringHandler(String str) {
-        String[] values = str.split("-");
-        String s = "";
-
-        for(int i=0; i<values.length ;++i) {
-            s = s + values[i];
+    public long stringHandler(String str) {
+        
+        try{
+            Date date = formatter.parse(str);
+            return date.getTime();
         }
-        return Integer.parseInt(s);
+        catch(ParseException e){
+            return -1;
+        }
     }
 
-    public String dateFormat(int number){
-
-        String s = Integer.toString(number);
-
-        String str1 = s.substring(0, 4) + "-";
-        String str2 = s.substring(4,6) + "-";
-        String str3 = s.substring(6);
-        
-        s = str1 + str2 + str3;
-        return s;
+    public String dateFormat(long number){
+        return formatter.format(number);
     }
 }

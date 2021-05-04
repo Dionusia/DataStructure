@@ -9,7 +9,7 @@ public class BinarySearchTree {
 
 
     //we start adding Nodes
-    public void addNode(int key, int name){
+    public void addNode(long key, long name){
 
         //we create a new Node and initialize it
         Node newNode = new Node(key, name);
@@ -66,25 +66,25 @@ public class BinarySearchTree {
     
     class Node {
 
-        int key;
-        int name;
+        long key;
+        long name;
 
         Node leftChild;
         Node rightChild;
 
-        Node(int key, int name){
+        Node(long key, long name){
             this.key = key;
             this.name=name;
         }
 
         public String toString(){
-            return "Date: " + handler.dateFormat(key) + " Volume: " + name;
+            return "Date: " + handler.dateFormat(key) + " Volume: " + name; //go to string
             
         }
     }
 
     //function for search
-    public Node findNode(int key){
+    public Node findNode(long key){
         Node focusNode = root;
 
         while(focusNode.key != key){
@@ -98,12 +98,11 @@ public class BinarySearchTree {
                 return null;
             }
         }
-
         return focusNode;
     }
 
     //change Volume
-    public void changeNode(int key, int newVolume){
+    public void changeNode(long key, long newVolume){
         Node getFocusNode = findNode(key);
 
         if(getFocusNode != null){
@@ -116,7 +115,7 @@ public class BinarySearchTree {
     }
 
 
-    public Node deleteNode(Node root, int key){
+    public Node deleteNode(Node root, long key){
         
         if(root == null){
             return root;
@@ -142,8 +141,8 @@ public class BinarySearchTree {
     
     }
 
-    public int getMinKey(Node root){
-        int min = root.key;
+    public long getMinKey(Node root){
+        long min = root.key;
         while(root.leftChild != null){
             min = root.leftChild.key;
             root = root.leftChild;
