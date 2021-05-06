@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +14,7 @@ public class Menu {
     BinarySearchTree tree = new BinarySearchTree();
     int intInput = 0;
     FiletoArray ar;
-    
+    Hash hashTable = new Hash();
 
     Menu(){
         try{
@@ -23,6 +22,7 @@ public class Menu {
 
     
             long[] array = handler.stringToIntArray(ar.getDate());
+            String[] arrayDate = ar.getDate();
 
             for(int i=0; i<array.length; i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
@@ -34,6 +34,10 @@ public class Menu {
 
             for(int i=0; i<getVolume.length; i++){
                 volumeTree.addNodeVolume(array_volume[i],getVolume[i]);
+            }
+
+            for(int i=0; i<arrayDate.length; i++){
+                hashTable.put(arrayDate[i], getVolume[i]);
             }
 
             initialMenu();
@@ -86,6 +90,9 @@ public class Menu {
                 break;
             case 2:
                 createVolumeMenu();
+                break;
+            case 3:
+                createDateVolumeMenu();
                 break;
 
         }
@@ -232,6 +239,88 @@ public class Menu {
 
     }
 
+    private void createDateVolumeMenu(){
+
+        while(true){
+            System.out.println("Main menu with Hashing: (pick from 1 to 5)");
+            System.out.println("1 --> Search for a Volume by date");
+            System.out.println("2 --> Change Volume of a date");
+            System.out.println("3 --> Delete a record by date");
+            System.out.println("4 --> exit");
+            System.out.println("5 --> Go back to initial Menu <-|");
+            System.out.print(">> ");    
+
+            stringInput = input.nextLine();
+
+            try {
+                intInput = Integer.parseInt(stringInput);
+                
+                if(intInput <= 0 || intInput > 6){
+                    System.out.print("\033[H\033[2J");   
+                    System.out.flush();
+                    System.out.println("Integer should be between 1 and 6");
+                }
+                else
+                    break;
+
+            }catch (Exception e){
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                System.out.println("Please type an integer from 1-6");
+            }
+
+        }
+        choiceHandlerDateVolume();
+
+    }
+
+    private void choiceHandlerDateVolume(){
+
+        goBack = ()->createMenu();
+        switch (intInput) {
+
+            case 1:
+                long dateToInt = handler.stringHandler(getDate());
+        
+                System.out.println(tree.findNode(dateToInt));
+
+                goBackToMenu();
+
+            break;
+                
+            case 2:
+                
+                dateToInt = handler.stringHandler(getDate());
+
+                getInteger();
+
+                tree.changeNode(dateToInt,intInput);
+            
+                goBackToMenu();
+
+                break;
+            case 3:
+                
+                dateToInt = handler.stringHandler(getDate());
+                    
+                tree.deleteNode(tree.root,dateToInt);
+
+                goBackToMenu();
+                break; 
+            case 4:
+                System.exit(0);
+                break;
+
+
+            case 5:
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                initialMenu();
+            default:
+                break;
+        }
+
+    }
 
     private void goBackToMenu(){
 
