@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,6 +8,7 @@ public class Menu {
 
     
     StringHandler handler = new StringHandler();
+    GoBackToMenu goBack;
     Scanner input = new Scanner(System.in);
     String stringInput;
     BSTVolume volumeTree = new BSTVolume();
@@ -19,18 +21,9 @@ public class Menu {
         try{
             ar = new FiletoArray("agn.us.txt","Volume");
 
-            /*int[] array = handler.stringToIntArray(ar.getDate());
-
-            int[] array1 = ar.getVolume();
-
-           for(int i=0; i<array.length; i++) {
-                tree.addNode(array[i], ar.getVolumeVector().get(i)); 
-            }
-
-           for(int i=0; i<array1.length; i++){
-                volumeTree.addNodeVolume(array1[i], array[i]);
-            }*/
+    
             long[] array = handler.stringToIntArray(ar.getDate());
+
             for(int i=0; i<array.length; i++) {
                 tree.addNode(array[i], ar.getVolumeVector().get(i)); 
             }
@@ -56,8 +49,8 @@ public class Menu {
     private void initialMenu(){
         while(true){
             System.out.println("Choose which menu you want: ");
-            System.out.println("1 --> BTS which keeps the record Date,Volume sorted by Date: ");
-            System.out.println("2 --> BTS which keeps the record Date,Volume sorted by Volume: ");
+            System.out.println("1 --> BST which keeps the record Date,Volume sorted by Date: ");
+            System.out.println("2 --> BST which keeps the record Date,Volume sorted by Volume: ");
             System.out.println("3 --> Hashing which keeps the record Date,Volume sorted by Date: ");
             System.out.print(">> ");
 
@@ -100,16 +93,15 @@ public class Menu {
 
 
     private void createMenu(){
-
-           
        
         while(true){
-            System.out.println("Main menu with BST: (pick from 1 to 5)");
+            System.out.println("Main menu with BST: (pick from 1 to 6)");
             System.out.println("1 --> Display BST with in order traverse");
             System.out.println("2 --> Search for a Volume by date");
             System.out.println("3 --> Change Volume of a date");
             System.out.println("4 --> Delete a record by date");
             System.out.println("5 --> exit");
+            System.out.println("6 --> Go back to initial Menu <-|");
             System.out.print(">> ");    
 
             
@@ -119,10 +111,10 @@ public class Menu {
             try {
                 intInput = Integer.parseInt(stringInput);
                 
-                if(intInput <= 0 || intInput > 5){
+                if(intInput <= 0 || intInput > 6){
                     System.out.print("\033[H\033[2J");   
                     System.out.flush();
-                    System.out.println("Integer should be between 1 and 5");
+                    System.out.println("Integer should be between 1 and 6");
                 }
                 else
                     break;
@@ -130,7 +122,7 @@ public class Menu {
             }catch (Exception e){
                 System.out.print("\033[H\033[2J");   
                 System.out.flush();
-                System.out.println("Please type an integer from 1-5");
+                System.out.println("Please type an integer from 1-6");
             }
 
         }
@@ -140,6 +132,7 @@ public class Menu {
     
     private void choiceHandler(){
         
+        goBack = ()->createMenu();
         switch (intInput) {
 
             case 1:
@@ -179,17 +172,24 @@ public class Menu {
             case 5:
                 System.exit(0);
                 break;
+
+            case 6:
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                initialMenu();
             default:
                 break;
         }
     }
 
     private void createVolumeMenu(){
-        
+        goBack = ()->createVolumeMenu();
         while(true){
 
             System.out.println("1 --> Find Date sorted by the minimum Volume: ");
             System.out.println("2 --> Find Date sorted by the maximum Volume: ");
+            System.out.println("3 --> Go back to initial Menu <-|");
+            System.out.print(">> ");
         
 
             stringInput = input.nextLine();
@@ -197,10 +197,10 @@ public class Menu {
             try {
                 intInput = Integer.parseInt(stringInput);
                 
-                if(intInput <= 0 || intInput > 2){
+                if(intInput <= 0 || intInput > 3){
                     System.out.print("\033[H\033[2J");   
                     System.out.flush();
-                    System.out.println("Integer should be between 1 and 2");
+                    System.out.println("Integer should be between 1 and 3");
                 }
                 else
                     break;
@@ -208,7 +208,7 @@ public class Menu {
             }catch (Exception e){
                 System.out.print("\033[H\033[2J");   
                 System.out.flush();
-                System.out.println("Please type an integer from 1-2");
+                System.out.println("Please type an integer from 1-3");
             }
 
         }
@@ -216,12 +216,18 @@ public class Menu {
         switch (intInput){
             case 1:
                System.out.println(volumeTree.findMinimum(volumeTree.root));
+               goBackToMenu();
                break;
             
             case 2:
                System.out.println(volumeTree.findMaximum(volumeTree.root));
+               goBackToMenu();
                break;
-
+            case 3:
+                System.out.print("\033[H\033[2J");   
+                System.out.flush();
+                initialMenu();
+                break;
         }
 
     }
@@ -237,7 +243,7 @@ public class Menu {
             if(stringInput.equals("back")){
                 System.out.print("\033[H\033[2J");  
                 System.out.flush();
-                createMenu();
+                goBack.goBack();
                 break;
             }
             else if(stringInput.equals("exit")){
@@ -296,7 +302,9 @@ public class Menu {
 
     public static void main(String[] args) {
         Menu a = new Menu();
-
-        
     }
+}
+
+interface GoBackToMenu{
+    void goBack();
 }

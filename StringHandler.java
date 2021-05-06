@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 public class StringHandler {
 
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+    
     public long[] stringToIntArray(String[] array) {
 
         long[] int_array = new long[array.length];

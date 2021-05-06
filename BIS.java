@@ -104,7 +104,7 @@ public class BIS {
         input.close();
         BIS a = new BIS("agn.us.txt", getInput);
 
-        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" milliseconds");
 
     }
 
