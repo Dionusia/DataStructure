@@ -10,20 +10,18 @@ public class BinarySearch {
             FiletoArray ar = new FiletoArray(filename, "Volume");
             String[] array= ar.getDate();
             
-            if(binarySearch(array, target)==-1){
-                System.out.println("Date not found");
-            }
-            else{
-                
-                System.out.println("date found");
-            }
+            
             //position of the given array
             startTime = System.nanoTime();
-            int position= binarySearch(array, target);
+            int position = binarySearch(array, target);
             endTime = System.nanoTime();
             //match the position of the date to volume
             
-            System.out.println("Volume for the given date is: " + ar.getVolumeVector().get(position));
+            if(position !=-1){
+                System.out.println("Volume for the given date is: " + ar.getVolumeVector().get(position));
+            }
+            else
+                System.out.println("Date not found");
 
             
         }
@@ -55,7 +53,6 @@ public class BinarySearch {
         }
          
         return -1;
-        
     
     }
 

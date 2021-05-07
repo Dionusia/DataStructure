@@ -55,8 +55,6 @@ public class InterpolationSearch {
     }
 
 
-
-
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
 
@@ -64,7 +62,17 @@ public class InterpolationSearch {
         String getInput = input.nextLine();
 
         input.close();
-        InterpolationSearch a = new InterpolationSearch("agn.us.txt", getInput);
+
+        //try{
+            //FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
+            //String[] array = ar.getDate();
+
+            //for(String str : array){
+                InterpolationSearch a = new InterpolationSearch("agn.us.txt", getInput);
+            //}
+        
+        //}catch(Exception e){}
+        
         System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
     }
 }
