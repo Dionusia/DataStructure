@@ -41,7 +41,7 @@ public class CountingSort {
     }
 
 
-    public  void countingSort(int[] array){
+    private void countingSort(int[] array){
         
 
         //find the maximum value on the given array
@@ -91,7 +91,6 @@ public class CountingSort {
 
     private int getInt(double i){
         return (int)Math.ceil(i); 
-    
     }
 
 

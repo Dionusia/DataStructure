@@ -30,7 +30,7 @@ public class MergeSort {
 
     }
     
-    public static void merge(double[] left_array,double[] right_array, double[] array,int left_size, int right_size){
+    private static void merge(double[] left_array,double[] right_array, double[] array,int left_size, int right_size){
         
         int i=0; int left_array_counter=0; int right_array_counter=0;
 
@@ -53,7 +53,7 @@ public class MergeSort {
     }
 
 
-    public void mergeSort(double array[], int lenght){
+    private void mergeSort(double array[], int lenght){
 
         if (lenght <= 1){
             endTime = System.nanoTime();

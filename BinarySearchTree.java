@@ -1,8 +1,7 @@
 
-
 public class BinarySearchTree {
 
-    StringHandler handler = new StringHandler();
+    private StringHandler handler = new StringHandler();
     Node root;
     
     BinarySearchTree(){root=null;}
@@ -66,8 +65,8 @@ public class BinarySearchTree {
     
     class Node {
 
-        long key;
-        long name;
+        private long key;
+        private long name;
 
         Node leftChild;
         Node rightChild;
@@ -166,25 +165,4 @@ public class BinarySearchTree {
         return node;
       }
 
-      
-
-    /*public static void main(String[] args) {
-        
-        BinarySearchTree theTree = new BinarySearchTree();
-        
-        theTree.addNode(50,3);
-        theTree.addNode(30,4);
-        theTree.addNode(20,5);
-        theTree.addNode(40,6);
-        theTree.addNode(70,7);
-        theTree.addNode(60,8);
-        theTree.addNode(80,9);
-        
-
-        //theTree.inOrderTraverseTree(theTree.root);
-        theTree.deleteNode(theTree.root,30);
-        theTree.inOrderTraverseTree(theTree.root);
-
-
-    }*/
 }

@@ -29,7 +29,7 @@ public class QuickSort {
   
 
 
-    public static int Partition(double [] array, int startIndex,int endIndex){
+    private static int Partition(double [] array, int startIndex,int endIndex){
       double pivot=array[endIndex]; //make the last element as pivot element
       int i = (startIndex-1); 
         for (int j=startIndex; j<endIndex; j++) { 
@@ -53,7 +53,7 @@ public class QuickSort {
     }
 
 
-    public static void quickSort(double [] array,int startIndex,int endIndex){
+    private static void quickSort(double [] array,int startIndex,int endIndex){
         if(startIndex<endIndex){
             int pIndex= Partition(array, startIndex, endIndex); //stores the position of pivot
             quickSort(array, startIndex, pIndex-1); //sorts the left side of pivot

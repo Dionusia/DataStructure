@@ -31,7 +31,7 @@ public class BinarySearch {
     
 
     
-    public int binarySearch(String[] array,String target){
+    private int binarySearch(String[] array,String target){
 
         int left=0;
         int right=array.length-1;

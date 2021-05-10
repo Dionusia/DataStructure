@@ -3,11 +3,11 @@ import java.util.*;
 
 public class SortDate {
 
-    double array[];
-    HashMap<String,Double> map = new LinkedHashMap<String,Double>();
+    private double array[];
+    private HashMap<String,Double> map = new LinkedHashMap<String,Double>();
 
-    int[] int_array;
-    HashMap<Double,Integer> Double_Int_map = new LinkedHashMap<Double,Integer>();
+    private int[] int_array;
+    private HashMap<Double,Integer> Double_Int_map = new LinkedHashMap<Double,Integer>();
 
     SortDate(double[] array,HashMap<String,Double> map) {
     

@@ -30,7 +30,7 @@ public class HeapSort {
 
 
 
-    public static void heapify(double [] array,int current,int size ){
+    private static void heapify(double [] array,int current,int size ){
         
         int largest=current; //parent
         int left=2*current+1; //left child
@@ -55,7 +55,7 @@ public class HeapSort {
 
     }
 
-    public void heapSort(double [] array){
+    private void heapSort(double [] array){
 
         for (int i = (array.length / 2) - 1; i >= 0; i--)
             heapify(array,i,array.length);

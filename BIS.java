@@ -13,7 +13,7 @@ public class BIS {
             long[] array = handler.stringToIntArray(ar.getDate());
             
             startTime = System.nanoTime(); 
-            long pos = bisSearch(array,0,array.length -1,handler.stringHandler(target));
+            long pos = bisSearch(array,0,array.length -1,handler.stringToUnixTime(target));
             
             endTime = System.nanoTime();
             
@@ -104,7 +104,7 @@ public class BIS {
         input.close();
         BIS a = new BIS("agn.us.txt", getInput);
 
-        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" milliseconds");
+        System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
 
     }
 

@@ -15,7 +15,7 @@ public class InterpolationSearch {
             long[] array = handler.stringToIntArray(ar.getDate());
             
             startTime = System.nanoTime();
-            long pos = search(array,0,array.length-1,handler.stringHandler(target));
+            long pos = search(array,0,array.length-1,handler.stringToUnixTime(target));
             endTime = System.nanoTime();
 
             if(pos == -1)   
