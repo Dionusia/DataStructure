@@ -3,25 +3,6 @@ import java.util.*;
 
 public class SortDate {
 
-    private double array[];
-    private HashMap<String,Double> map = new LinkedHashMap<String,Double>();
-
-    private int[] int_array;
-    private HashMap<Double,Integer> Double_Int_map = new LinkedHashMap<Double,Integer>();
-
-    SortDate(double[] array,HashMap<String,Double> map) {
-    
-        this.array = array;
-        this.map = map;
-    }
-
-    SortDate(int[] int_array,HashMap<Double,Integer> map){
-        this.int_array = int_array;
-        this.Double_Int_map = map;
-
-    }
-
-
 
     //K,V generics -> Function to get the key of a value in the map
     private static <K, V> K getKey(HashMap<K, V> map, V value) {

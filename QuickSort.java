@@ -13,7 +13,7 @@ public class QuickSort {
             quickSort(array,0,array.length-1);
             endTime = System.nanoTime();
             
-            SortDate order = new SortDate(array,fta.getMap());
+            SortDate order = new SortDate();
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
 

@@ -22,7 +22,7 @@ public class CountingSort {
             countingSort(int_array);
             endTime = System.nanoTime();
 
-            SortDate sortDoubleInt = new SortDate(int_array,DClose_ICloseMap);
+            SortDate sortDoubleInt = new SortDate();
             
             LinkedHashMap<Double,Integer> orderedMap = sortDoubleInt.classifyArray(DClose_ICloseMap, int_array);
             

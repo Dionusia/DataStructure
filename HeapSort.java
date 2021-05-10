@@ -13,7 +13,7 @@ public class HeapSort {
             heapSort(array);
             endTime = System.nanoTime();
 
-            SortDate order = new SortDate(array,fta.getMap());
+            SortDate order = new SortDate();
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
 

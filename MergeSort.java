@@ -15,7 +15,7 @@ public class MergeSort {
             
             mergeSort(array,array.length);
             
-            SortDate order = new SortDate(array,fta.getMap());
+            SortDate order = new SortDate();
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
 
