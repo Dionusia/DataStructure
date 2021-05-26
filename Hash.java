@@ -107,7 +107,7 @@ public class Hash{
     }
     
     //change a volume of a given date
-    public void changeTemp(String date,int volume) {
+    public void changeVolume(String date,int volume) {
     	int index = HashFunction(date);
     	LinkedList<DateVolume> items = hashTable[index];
     	
