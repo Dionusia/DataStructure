@@ -14,7 +14,7 @@ public class MergeSort {
             startTime = System.nanoTime(); 
             
             mergeSort(array,array.length);
-            
+            endTime = System.nanoTime();
             SortDate order = new SortDate();
 
             LinkedHashMap<String,Double> orderedMap = order.classifyDateAndField(fta.getMap(),array);
@@ -56,7 +56,6 @@ public class MergeSort {
     private void mergeSort(double array[], int lenght){
 
         if (lenght <= 1){
-            endTime = System.nanoTime();
             return;
         } //checks if there is one element in the array
         

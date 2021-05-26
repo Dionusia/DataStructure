@@ -21,7 +21,7 @@ public class InterpolationSearch {
             if(pos == -1)   
                 System.out.println("Element not found");
             else
-                System.out.println("Element found, Volume: " + ar.getVolumeVector().get((int)pos));
+                System.out.println(target +", Volume: " + ar.getVolumeVector().get((int)pos));
                
             
         }catch(Exception e){
@@ -34,20 +34,27 @@ public class InterpolationSearch {
         
         //startIndex will be array[0] for the first time whereas endIndex will be array[length -1]  
 
-        if(startIndex <= endIndex && target >= array[(int)startIndex] && target <= array[(int)endIndex]){
+        if(array[(int)startIndex] == array[(int)endIndex]){
+            return endIndex;
+        }
+        else if(startIndex <= endIndex && target >= array[(int)startIndex] && target <= array[(int)endIndex]){
 
             //position variable according to the interpolation algorithm
             long position = startIndex + (((endIndex - startIndex) / (array[(int)endIndex] - array[(int)startIndex]))*(target -array[(int)startIndex])); 
 
+
             if(array[(int)position] == target){
                 return position; //element found
             }
+            /*else if(array[(int)position] == endIndex)
+                return search(array,position,endIndex,target);*/
             else if(array[(int)position] < target){
                 return search(array,position+1,endIndex,target); //go to the next element in position of the left part of array
             }
             else if(array[(int)position] > target){
                 return search(array,startIndex,position-1,target); //go to the next element in position of the right part of array(starting from high)
             }
+            
 
         }
         
@@ -63,9 +70,9 @@ public class InterpolationSearch {
 
         input.close();
 
-        //try{
-            //FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
-            //String[] array = ar.getDate();
+        /*try{
+            FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
+            String[] array = ar.getDate();*/
 
             //for(String str : array){
                 InterpolationSearch a = new InterpolationSearch("agn.us.txt", getInput);

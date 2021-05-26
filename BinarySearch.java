@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.Scanner;
 
 
 public class BinarySearch {
@@ -15,6 +14,9 @@ public class BinarySearch {
             startTime = System.nanoTime();
             int position = binarySearch(array, target);
             endTime = System.nanoTime();
+
+
+
             //match the position of the date to volume
             
             if(position !=-1){
@@ -34,7 +36,7 @@ public class BinarySearch {
     private int binarySearch(String[] array,String target){
 
         int left=0;
-        int right=array.length-1;
+        int right=array.length;
 
         while(left<right){
             int mid=(left+right) /2;
@@ -57,11 +59,11 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter a date(example:2007-04-17): ");
-        String date = myObj.nextLine();
-        BinarySearch a = new BinarySearch("agn.us.txt",date);
-        myObj.close();
+        
+        StringHandler handler = new StringHandler();
+       
+        BinarySearch a = new BinarySearch("agn.us.txt",handler.getDate());
+        
         System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
       
     } 
