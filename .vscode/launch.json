@@ -1,0 +1,70 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch BIS",
+            "request": "launch",
+            "mainClass": "BIS",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinarySearch",
+            "request": "launch",
+            "mainClass": "BinarySearch",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch CountingSort",
+            "request": "launch",
+            "mainClass": "CountingSort",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch HeapSort",
+            "request": "launch",
+            "mainClass": "HeapSort",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch InterpolationSearch",
+            "request": "launch",
+            "mainClass": "InterpolationSearch",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Menu",
+            "request": "launch",
+            "mainClass": "Menu",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch MergeSort",
+            "request": "launch",
+            "mainClass": "MergeSort",
+            "projectName": "DataStructure_11106cf4"
+        },
+        {
+            "type": "java",
+            "name": "Launch QuickSort",
+            "request": "launch",
+            "mainClass": "QuickSort",
+            "projectName": "DataStructure_11106cf4"
+        }
+    ]
+}

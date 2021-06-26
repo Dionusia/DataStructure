@@ -63,22 +63,11 @@ public class InterpolationSearch {
 
 
     public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Date to search for: ");
-        String getInput = input.nextLine();
-
-        input.close();
-
-        /*try{
-            FiletoArray ar = new FiletoArray("agn.us.txt","Volume");
-            String[] array = ar.getDate();*/
-
-            //for(String str : array){
-                InterpolationSearch a = new InterpolationSearch("agn.us.txt", getInput);
-            //}
         
-        //}catch(Exception e){}
+        StringHandler handler = new StringHandler();
+        
+        InterpolationSearch a = new InterpolationSearch("agn.us.txt", handler.getDate());
+           
         
         System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
     }

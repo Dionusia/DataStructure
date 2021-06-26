@@ -1,30 +1,11 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.LinkedList;
 
-class DateVolume {
-
-	int volume;
-	String date;
-	
-    public void setDate(String date) {
-    	this.date=date;
-    }
-    public String getDate() {
-    	return date;
-    }
-    public void setVolume(int volume) {
-    	this.volume=volume;
-    }
-    public double getVolume() {
-    	return volume;
-    }
-}
 
 public class Hash{
     public static final int capacity = 25;
     @SuppressWarnings({"unchecked"})
     LinkedList<DateVolume>[] hashTable = new LinkedList[capacity];
+    
     public Hash() {
         
         for(int i=0; i<capacity; i++) {
@@ -34,14 +15,11 @@ public class Hash{
     //Converts a date to an int using the ascii value of the digits
     public int HashFunction(String date) {
     	
-		SimpleDateFormat dfDate  = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
-        String data="";
-        Calendar c = Calendar.getInstance(); 
-        data=dfDate.format(c.getTime());
-		int value=0;
+		int value = 0;
 		int counter=0;
-		for(int i=0;i<data.length();i++) {
-			value=value+(int)data.charAt(i);
+
+		for(int i=0; i<date.length();i++) {
+			value=value+(int)date.charAt(i);
 			counter++;
 		}
     	return value%(counter+1);
@@ -83,7 +61,7 @@ public class Hash{
     	int index = HashFunction(date);
         for(DateVolume item:hashTable[index]) {
         	if(item.date.equals(date)) {
-        		 v=item.volume;
+                v=item.volume;
         	}
         }
 		return v;
@@ -107,19 +85,40 @@ public class Hash{
     }
     
     //change a volume of a given date
-    public void changeVolume(String date,int volume) {
+    public void changeTemp(String date,int volume) {
     	int index = HashFunction(date);
     	LinkedList<DateVolume> items = hashTable[index];
     	
-    	 if(items == null)
-             return;
+        if(items == null)
+            return;
   
-         for(DateVolume item : items) {
-             if (item.date.equals(date)) {
-                 item.setVolume(volume);
-                 return;
-             }
-         }
+        for(DateVolume item : items) {
+            
+            if (item.date.equals(date)) {
+
+                item.setVolume(volume);
+                return;
+            }
+        }
     }
 
+}
+
+class DateVolume {
+
+	int volume;
+	String date;
+	
+    public void setDate(String date) {
+    	this.date=date;
+    }
+    public String getDate() {
+    	return date;
+    }
+    public void setVolume(int volume) {
+    	this.volume=volume;
+    }
+    public double getVolume() {
+    	return volume;
+    }
 }

@@ -31,7 +31,7 @@ public class BIS {
     private long bisSearch(long[] array, long left, long right, long target){
 
         
-        if(left>right || (left==right && array[(int)left]!=target)){            
+        if(left>right || (left==right && array[(int)left]!= target)){            
             return -1;
         }
         else if(left==right && array[(int)left] == target){    
@@ -45,6 +45,7 @@ public class BIS {
         int i =1;
 
         if(target > array[(int)mid]){
+            //System.out.println("a");
             long next = mid + i*(int)Math.sqrt(array.length);
 
             while(true){
@@ -70,7 +71,6 @@ public class BIS {
 
             while(true) {
                 
-
                 if(next <left || target>array[(int)next])   
                     break;
                 
@@ -94,13 +94,9 @@ public class BIS {
 
 
     public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("Date to search for: ");
-        String getInput = input.nextLine();
+        StringHandler handler = new StringHandler();
 
-        input.close();
-        BIS a = new BIS("agn.us.txt", getInput);
+        BIS a = new BIS("agn.us.txt", handler.getDate());
 
         System.out.println("Elapsed time: " + (a.endTime - a.startTime) +" nanoseconds");
 
